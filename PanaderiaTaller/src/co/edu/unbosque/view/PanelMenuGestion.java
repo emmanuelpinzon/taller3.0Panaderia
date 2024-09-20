@@ -30,27 +30,27 @@ public class PanelMenuGestion extends JPanel {
 		setSize(1280, 720);
 
 		btnAgregar = new JButton("agregar");
-		btnAgregar.setBounds(483, 270, 140, 130);
+		btnAgregar.setBounds(380, 299, 160, 80);
 		btnAgregar.setOpaque(false);
 		btnAgregar.setActionCommand("AGREGAR");
 
 		btnMostrar = new JButton("mostrar");
-		btnMostrar.setBounds(900, 400, 170, 130);
+		btnMostrar.setBounds(850, 440, 160, 80);
 		btnMostrar.setOpaque(false);
 		btnMostrar.setActionCommand("MOSTRAR");
 
 		btnActualizar = new JButton("actualizar");
-		btnActualizar.setBounds(483, 400, 140, 130);
+		btnActualizar.setBounds(380, 440, 160, 80);
 		btnActualizar.setOpaque(false);
 		btnActualizar.setActionCommand("ACTUALIZAR");
 
 		btnEliminar = new JButton("eliminar");
-		btnEliminar.setBounds(900, 270, 170, 130);
+		btnEliminar.setBounds(850, 299, 160, 80);
 		btnEliminar.setOpaque(false);
 		btnEliminar.setActionCommand("ELIMINAR");
 
 		btnVolver = new JButton("volver");
-		btnVolver.setBounds(570, 530, 160, 125);
+		btnVolver.setBounds(590, 530, 160, 80);
 		btnVolver.setOpaque(false);
 		btnVolver.setActionCommand("VOLVER");
 

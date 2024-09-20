@@ -40,23 +40,23 @@ public class PanelMenuPrincipal extends JPanel {
 		imagenPpal.setBounds(0, 0, 1280, 720);
 
 		btnPanDulce = new JButton("panDulce");
-		btnPanDulce.setBounds(450, 328, 140, 110);
+		btnPanDulce.setBounds(350, 328, 300, 110);
 		btnPanDulce.setOpaque(false);
 		btnPanDulce.setActionCommand("PANDULCE");
 
 		btnPanQueso = new JButton("panQueso ");
-		btnPanQueso.setBounds(800, 338, 155, 100);
+		btnPanQueso.setBounds(700, 338, 300, 100);
 		btnPanQueso.setOpaque(false);
 		btnPanQueso.setActionCommand("PANQUESO");
 
 		btnPanIntegral = new JButton("panIntegral");//Disminuir Y = El botón sube.Aumentar Y = El botón baja.
 // disminuir x= izquierda. aumentar x= derecha
-		btnPanIntegral.setBounds(450, 460, 140, 100);
+		btnPanIntegral.setBounds(350, 470, 300, 100);
 		btnPanIntegral.setOpaque(false);
 		btnPanIntegral.setActionCommand("PANINTEGRAL");
 
 		btnPanHojaldrado = new JButton("panHojaldrado");
-		btnPanHojaldrado.setBounds(690, 470, 170, 100);
+		btnPanHojaldrado.setBounds(690, 470, 300, 100);
 		btnPanHojaldrado.setOpaque(false);
 		btnPanHojaldrado.setActionCommand("PANHOJALDRADO");
 
