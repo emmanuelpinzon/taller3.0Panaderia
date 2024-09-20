@@ -34,7 +34,7 @@ public class PanelMenuPrincipal extends JPanel {
 		setVisible(true);
 
 		imagenPpal = new JLabel();
-		ImageIcon imagen1 = new ImageIcon("src/media/IMAGEN MENU PRINCIPAL PANES.png");
+		ImageIcon imagen1 = new ImageIcon("src/media/MENUPRINCIPAL.png");
 		Image redimensionado = imagen1.getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH);
 		imagenPpal.setIcon(new ImageIcon(redimensionado));
 		imagenPpal.setBounds(0, 0, 1280, 720);

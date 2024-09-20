@@ -124,28 +124,28 @@ public class PanelEntrada extends JPanel {
 		imagenProducto.setBorder(border);
 
 		imagenAgregarC = new JLabel();
-		ImageIcon imagenAgregarCa = new ImageIcon("src/media/CREARPANDULCE.png");
+		ImageIcon imagenAgregarCa = new ImageIcon("src/media/CREARPANDULCE1.png");
 		Image redimensionado = imagenAgregarCa.getImage().getScaledInstance(1280, 705, Image.SCALE_SMOOTH);
 		imagenAgregarC.setIcon(new ImageIcon(redimensionado));
 		imagenAgregarC.setVisible(false);
 		imagenAgregarC.setBounds(0, 0, 1280, 705);
 
 		imagenAgregarV = new JLabel();
-		ImageIcon imagenAgregarVe = new ImageIcon("src/media/CREARPANQUESO.png");
+		ImageIcon imagenAgregarVe = new ImageIcon("src/media/CREARPANQUESO1.png");
 		Image redimensionadoV = imagenAgregarVe.getImage().getScaledInstance(1280, 705, Image.SCALE_SMOOTH);
 		imagenAgregarV.setIcon(new ImageIcon(redimensionadoV));
 		imagenAgregarV.setVisible(false);
 		imagenAgregarV.setBounds(0, 0, 1280, 705);
 
 		imagenAgregarJ = new JLabel();
-		ImageIcon imagenAgregarJu = new ImageIcon("src/media/CREAR PAN INTEGRAL 1.png");
+		ImageIcon imagenAgregarJu = new ImageIcon("src/media/CREARPANINTEGRAL1.png");
 		Image redimensionadoJ = imagenAgregarJu.getImage().getScaledInstance(1280, 705, Image.SCALE_SMOOTH);
 		imagenAgregarJ.setIcon(new ImageIcon(redimensionadoJ));
 		imagenAgregarJ.setVisible(false);
 		imagenAgregarJ.setBounds(0, 4, 1280, 705);
 
 		imagenAgregarP = new JLabel();
-		ImageIcon imagenAgregarPa = new ImageIcon("src/media/CREARPANHOJALDRADO.png");
+		ImageIcon imagenAgregarPa = new ImageIcon("src/media/CREARPANHOJALDRADO1.png");
 		Image redimensionadoP = imagenAgregarPa.getImage().getScaledInstance(1280, 705, Image.SCALE_SMOOTH);
 		imagenAgregarP.setIcon(new ImageIcon(redimensionadoP));
 		imagenAgregarP.setVisible(false);
