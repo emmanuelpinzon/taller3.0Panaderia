@@ -34,15 +34,15 @@ public class PanelEntrada extends JPanel {
 
 		// **Inicialización y configuración de campos de texto (JTextField)**
 		cantidadPan= new JTextField();
-		cantidadPan.setBounds(230, 180, 340, 45);
+		cantidadPan.setBounds(230, 182, 360, 45);
 		cantidadPan.setOpaque(true);
 		
 		nombre= new JTextField();
-		nombre.setBounds(800, 180, 250, 48);
+		nombre.setBounds(800, 180, 320, 48);
 		nombre.setOpaque(true);
 		
 		peso = new JTextField();
-		peso.setBounds(230, 295, 330, 55);
+		peso.setBounds(230, 295, 360, 55);
 		peso.setOpaque(true);
 
 		precio = new JTextField();
@@ -111,7 +111,7 @@ public class PanelEntrada extends JPanel {
 
 		btnActualizar = new JButton("Actualizar");
 		btnActualizar.setOpaque(true);
-		btnActualizar.setBounds(310, 530, 320, 100);
+		btnActualizar.setBounds(550, 400, 140, 55);
 		btnActualizar.setActionCommand("UPDATE");
 		btnActualizar.setBackground(Color.DARK_GRAY);
 		btnActualizar.setForeground(Color.WHITE);
@@ -178,27 +178,7 @@ public class PanelEntrada extends JPanel {
 
 
 		
-		setComponentZOrder(imagenProducto, 0); // Imagen de fondo
-		setComponentZOrder(imagenAgregarC, 1);
-		setComponentZOrder(imagenAgregarV, 2);
-		setComponentZOrder(imagenAgregarJ, 3);
-		setComponentZOrder(imagenAgregarP, 4);
-		setComponentZOrder(nombre, 5);
-		setComponentZOrder(peso, 6);
-		setComponentZOrder(precio, 7);
-		setComponentZOrder(tieneGluten, 8);
-		setComponentZOrder(tieneLevadura, 9);
-		setComponentZOrder(saborDulce, 10);
-		setComponentZOrder(tieneArequipe, 11);
-		setComponentZOrder(tipoQueso, 12);
-		setComponentZOrder(esGratinado, 13);
-		setComponentZOrder(tieneSieteGranos, 14);
-		setComponentZOrder(tieneFrutosSecos, 15);
-		setComponentZOrder(esCroissant, 16);
-		setComponentZOrder(tieneCarne, 17);
-		setComponentZOrder(btnVolver, 17);
-		setComponentZOrder(btnAgregar, 18);
-		setComponentZOrder(btnActualizar, 19);
+		
 	}
 
 	
