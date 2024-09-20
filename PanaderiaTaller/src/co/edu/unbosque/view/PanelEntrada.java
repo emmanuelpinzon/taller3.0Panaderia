@@ -111,7 +111,7 @@ public class PanelEntrada extends JPanel {
 
 		btnActualizar = new JButton("Actualizar");
 		btnActualizar.setOpaque(true);
-		btnActualizar.setBounds(310, 530, 320, 100);
+		btnActualizar.setBounds(810, 620, 140, 50);
 		btnActualizar.setActionCommand("UPDATE");
 		btnActualizar.setBackground(Color.DARK_GRAY);
 		btnActualizar.setForeground(Color.WHITE);
