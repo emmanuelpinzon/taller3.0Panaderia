@@ -1,6 +1,6 @@
 package co.edu.unbosque.model;
 
-public class PanQuesoDTO extends Pan {
+public class PanQuesoDTO extends PanDTO {
 
 	private String tipoQueso;
 	private boolean esGratinado;

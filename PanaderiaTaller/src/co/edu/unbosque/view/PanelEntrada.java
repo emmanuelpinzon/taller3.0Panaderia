@@ -2,7 +2,6 @@ package co.edu.unbosque.view;
 
 import java.awt.Color;
 import java.awt.Image;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,36 +10,64 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+/**
+ * La clase {@code PanelEntrada} representa un panel gráfico que permite al
+ * usuario ingresar información sobre diferentes tipos de pan, incluyendo
+ * características como cantidad, nombre, peso, precio y atributos específicos
+ * (por ejemplo, si tiene gluten o es croissant).
+ * 
+ * Este panel es parte de la interfaz de usuario y facilita la interacción del
+ * usuario al proporcionar campos de entrada y botones para agregar o actualizar
+ * productos.
+ * 
+ * <p>
+ * Ejemplo de uso:
+ * </p>
+ * 
+ * <pre>
+ * PanelEntrada panel = new PanelEntrada();
+ * panel.getBtnAgregar().addActionListener(e -> {
+ * 	// Lógica para agregar un nuevo producto
+ * });
+ * </pre>
+ * 
+ * @author Nicole
+ * @version 1.0
+ */
 public class PanelEntrada extends JPanel {
 	private JLabel imagenBackground, imagenProducto, imagenAgregarC, imagenAgregarV, imagenAgregarJ, imagenAgregarP;
-	private JTextField cantidadPan, nombre, peso , precio, tieneGluten, tieneLevadura, saborDulce, tieneArequipe, tipoQueso, esGratinado, tieneSieteGranos,
-	tieneFrutosSecos, esCroissant, tieneCarne;
+	private JTextField cantidadPan, nombre, peso, precio, tieneGluten, tieneLevadura, saborDulce, tieneArequipe,
+			tipoQueso, esGratinado, tieneSieteGranos, tieneFrutosSecos, esCroissant, tieneCarne;
 	private JButton btnVolver, btnAgregar, btnActualizar;
 
 	/**
-	 * Constructor de la clase PanelEntrada. Inicializa y configura todos los
-	 * componentes gráficos del panel, incluyendo campos de texto, botones y
-	 * etiquetas de imagen, así como las propiedades del panel...
+	 * Constructor de la clase {@code PanelEntrada}. Inicializa y configura todos
+	 * los componentes gráficos del panel, incluyendo campos de texto, botones y
+	 * etiquetas de imagen, así como las propiedades del panel.
+	 * 
+	 * Se establece el tamaño del panel, su layout, y se agregan todos los
+	 * componentes necesarios para la funcionalidad de ingreso de datos.
 	 */
 	public PanelEntrada() {
-
-		// **Creación y configuración del borde para los componentes**
+		// Creación y configuración del borde para los componentes
 		Border border = BorderFactory.createLineBorder(Color.BLACK, 3);
 
-		// **Configuración básica del panel**
+		// Configuración básica del panel
 		setSize(1280, 720);
 		setLayout(null);
 		setVisible(true);
+
 
 		// **Inicialización y configuración de campos de texto (JTextField)**
 		cantidadPan= new JTextField();
 		cantidadPan.setBounds(226, 182, 360, 45);
 		cantidadPan.setOpaque(true);
+
 		
 		nombre= new JTextField();
 		nombre.setBounds(798, 180, 320, 48);
 		nombre.setOpaque(true);
-		
+
 		peso = new JTextField();
 		peso.setBounds(230, 295, 360, 55);
 		peso.setOpaque(true);
@@ -60,6 +87,7 @@ public class PanelEntrada extends JPanel {
 		saborDulce = new JTextField();
 		saborDulce.setBounds(812, 516, 275, 65);
 		saborDulce.setOpaque(true);
+
 		
 		tieneArequipe = new JTextField();
 		tieneArequipe.setBounds(813, 409, 273, 57);
@@ -68,31 +96,34 @@ public class PanelEntrada extends JPanel {
 		tipoQueso = new JTextField();
 		tipoQueso.setBounds(810, 410, 280, 60);
 		tipoQueso.setOpaque(true);
+
 		
 		esGratinado = new JTextField();
 		esGratinado.setBounds(811, 519, 275, 63);
 		esGratinado.setOpaque(true);
+
 		
 		tieneSieteGranos = new JTextField();
 		tieneSieteGranos.setBounds(810, 414, 276, 57);
 		tieneSieteGranos.setOpaque(true);
 		
+
 		tieneFrutosSecos = new JTextField();
 		tieneFrutosSecos.setBounds(810, 525, 276, 57);
 		tieneFrutosSecos.setOpaque(true);
+
 		
 		esCroissant = new JTextField();
 		esCroissant.setBounds(810, 411, 272, 57);
 		esCroissant.setOpaque(true);
+
 		
 		tieneCarne = new JTextField();
 		tieneCarne.setBounds(810, 516, 276, 63);
 		tieneCarne.setOpaque(true);
-		
-		
-	
 
-		// **Inicialización y configuración de botones (JButton)**
+		
+		// Inicialización y configuración de botones (JButton)
 		btnVolver = new JButton("Volver");
 		btnVolver.setBounds(630, 615, 130, 55);
 		btnVolver.setOpaque(false);
@@ -114,7 +145,7 @@ public class PanelEntrada extends JPanel {
 		btnActualizar.setBackground(new Color(255, 217, 47));
 		btnActualizar.setBorder(border);
 
-		// **Inicialización y configuración de etiquetas de imagen (JLabel)**
+		// Inicialización y configuración de etiquetas de imagen (JLabel)
 		imagenProducto = new JLabel();
 		imagenProducto.setVisible(false);
 		imagenProducto.setBounds(790, 205, 380, 260);
@@ -148,7 +179,7 @@ public class PanelEntrada extends JPanel {
 		imagenAgregarP.setVisible(false);
 		imagenAgregarP.setBounds(-4, -2, 1280, 705);
 
-		// **Agregando todos los componentes al panel**
+		// Agregando todos los componentes al panel
 		add(cantidadPan);
 		add(nombre);
 		add(peso);
@@ -167,442 +198,234 @@ public class PanelEntrada extends JPanel {
 		add(btnAgregar);
 		add(btnActualizar);
 		add(imagenProducto);
-
 		add(imagenAgregarC);
 		add(imagenAgregarV);
 		add(imagenAgregarJ);
 		add(imagenAgregarP);
 
-		setComponentZOrder(imagenProducto, 0); // Imagen de fondo
-        setComponentZOrder(imagenAgregarC, 1);
-        setComponentZOrder(imagenAgregarV, 2);
-        setComponentZOrder(imagenAgregarJ, 3);
-        setComponentZOrder(imagenAgregarP, 4);
-        setComponentZOrder(nombre, 5);
-        setComponentZOrder(peso, 6);
-        setComponentZOrder(precio, 7);
-        setComponentZOrder(tieneGluten, 8);
-        setComponentZOrder(tieneLevadura, 9);
-        setComponentZOrder(saborDulce, 10);
-        setComponentZOrder(tieneArequipe, 11);
-        setComponentZOrder(tipoQueso, 12);
-        setComponentZOrder(esGratinado, 13);
-        setComponentZOrder(tieneSieteGranos, 14);
-        setComponentZOrder(tieneFrutosSecos, 15);
-        setComponentZOrder(esCroissant, 16);
-        setComponentZOrder(tieneCarne, 17);
-        setComponentZOrder(btnVolver, 17);
-        setComponentZOrder(btnAgregar, 18);
-        setComponentZOrder(btnActualizar, 19);
+
 		
 		
+
+		setComponentZOrder(imagenAgregarC, 1);
+		setComponentZOrder(imagenAgregarV, 2);
+		setComponentZOrder(imagenAgregarJ, 3);
+		setComponentZOrder(imagenAgregarP, 4);
+		setComponentZOrder(nombre, 5);
+		setComponentZOrder(peso, 6);
+		setComponentZOrder(precio, 7);
+		setComponentZOrder(tieneGluten, 8);
+		setComponentZOrder(tieneLevadura, 9);
+		setComponentZOrder(saborDulce, 10);
+		setComponentZOrder(tieneArequipe, 11);
+		setComponentZOrder(tipoQueso, 12);
+		setComponentZOrder(esGratinado, 13);
+		setComponentZOrder(tieneSieteGranos, 14);
+		setComponentZOrder(tieneFrutosSecos, 15);
+		setComponentZOrder(esCroissant, 16);
+		setComponentZOrder(tieneCarne, 17);
+		setComponentZOrder(btnVolver, 18);
+		setComponentZOrder(btnAgregar, 19);
+		setComponentZOrder(btnActualizar, 20);
+	
 	}
 
-	
+	/**
+	 * Obtiene el campo de texto para la cantidad de pan.
+	 * 
+	 * @return el campo de texto que contiene la cantidad de pan.
+	 */
 	public JTextField getCantidadPan() {
 		return cantidadPan;
 	}
 
-
-	public void setCantidadPan(JTextField cantidadPan) {
-		this.cantidadPan = cantidadPan;
-	}
-
-
-	public void setSaborDulce(JTextField saborDulce) {
-		this.saborDulce = saborDulce;
-	}
-
-
-
-
-	public JLabel getImagenProducto() {
-		return imagenProducto;
-	}
-
-
-	public void setImagenProducto(JLabel imagenProducto) {
-		this.imagenProducto = imagenProducto;
-	}
-
-
 	/**
-	 * Obtiene el botón de actualización.
-	 *
-	 * @return el botón btnActualizar.
-	 */
-
-	
-	public JButton getBtnActualizar() {
-		return btnActualizar;
-	}
-
-	/**
-	 * Establece el botón de actualización.
-	 *
-	 * @param btnActualizar el botón btnActualizar a establecer.
-	 */
-	public void setBtnActualizar(JButton btnActualizar) {
-		this.btnActualizar = btnActualizar;
-	}
-	
-	
-
-	/**
-	 * Obtiene la etiqueta de la imagen de fondo.
-	 *
-	 * @return la etiqueta imagenBackground.
-	 */
-	public JLabel getImagenBackground() {
-		return imagenBackground;
-	}
-
-	/**
-	 * Establece la etiqueta de la imagen de fondo. ...
-	 *
-	 * @param imagenBackground la etiqueta imagenBackground a establecer.
-	 */
-	public void setImagenBackground(JLabel imagenBackground) {
-		this.imagenBackground = imagenBackground;
-	}
-
-
-	 
-	public JLabel getImagenAgregarC() {
-		return imagenAgregarC;
-	}
-
-	/**
-	 * Establece la etiqueta de la imagen para agregar tipo C. ...
-	 *
-	 * @param imagenAgregarC la etiqueta imagenAgregarC a establecer.
-	 */
-	public void setImagenAgregarC(JLabel imagenAgregarC) {
-		this.imagenAgregarC = imagenAgregarC;
-	}
-
-	/**
-	 * Obtiene la etiqueta de la imagen para agregar tipo V.
-	 *
-	 * @return la etiqueta imagenAgregarV.
-	 */
-	public JLabel getImagenAgregarV() {
-		return imagenAgregarV;
-	}
-
-	/**
-	 * Establece la etiqueta de la imagen para agregar tipo V.
-	 *
-	 * @param imagenAgregarV la etiqueta imagenAgregarV a establecer.
-	 */
-	public void setImagenAgregarV(JLabel imagenAgregarV) {
-		this.imagenAgregarV = imagenAgregarV;
-	}
-
-	/**
-	 * Obtiene la etiqueta de la imagen para agregar tipo J.
-	 *
-	 * @return la etiqueta imagenAgregarJ.
-	 */
-	public JLabel getImagenAgregarJ() {
-		return imagenAgregarJ;
-	}
-
-	/**
-	 * Establece la etiqueta de la imagen para agregar tipo J.
-	 *
-	 * @param imagenAgregarJ la etiqueta imagenAgregarJ a establecer.
-	 */
-	public void setImagenAgregarJ(JLabel imagenAgregarJ) {
-		this.imagenAgregarJ = imagenAgregarJ;
-	}
-
-	/**
-	 * Obtiene la etiqueta de la imagen para agregar tipo P.
-	 *
-	 * @return la etiqueta imagenAgregarP.
-	 */
-	public JLabel getImagenAgregarP() {
-		return imagenAgregarP;
-	}
-
-	/**
-	 * Establece la etiqueta de la imagen para agregar tipo P.
-	 *
-	 * @param imagenAgregarP la etiqueta imagenAgregarP a establecer.
-	 */
-	public void setImagenAgregarP(JLabel imagenAgregarP) {
-		this.imagenAgregarP = imagenAgregarP;
-	}
-
-	/**
-	 * Obtiene el campo de texto para el peso.
-	 *
-	 * @return el campo de texto peso.
+	 * Obtiene el campo de texto para el nombre del producto.
+	 * 
+	 * @return el campo de texto que contiene el nombre del producto.
 	 */
 	public JTextField getNombre() {
 		return nombre;
 	}
 
-	public void setNombre(JTextField nombre) {
-		this.nombre = nombre;
-	}
-	
+	/**
+	 * Obtiene el campo de texto para el peso del producto.
+	 * 
+	 * @return el campo de texto que contiene el peso del producto.
+	 */
 	public JTextField getPeso() {
 		return peso;
 	}
 
-
-
 	/**
-	 * Establece el campo de texto para el peso.
-	 *
-	 * @param peso el campo de texto para el peso a establecer.
-	 */
-	public void setPeso(JTextField peso) {
-		this.peso = peso;
-	}
-
-	/**
-	 * Obtiene el campo para el precio del pan.
-	 *
-	 * @return el campo de precio.
+	 * Obtiene el campo de texto para el precio del producto.
+	 * 
+	 * @return el campo de texto que contiene el precio del producto.
 	 */
 	public JTextField getPrecio() {
 		return precio;
 	}
 
 	/**
-	 * Establece el campo de texto para el precio.
-	 *
-	 * @param el campo de precio a establecer.
-	 */
-	public void setPrecio(JTextField precio) {
-		this.precio= precio;
-	}
-
-	/**
-	 * Obtiene el campo de texto para el gluten.
-	 *
-	 * @return el campo para preguntar si tiene gluten el pan seleccionado.
+	 * Obtiene el campo de texto que indica si el producto contiene gluten.
+	 * 
+	 * @return el campo de texto que indica si el producto tiene gluten.
 	 */
 	public JTextField getTieneGluten() {
 		return tieneGluten;
 	}
 
 	/**
-	 * Establece el campo de texto si el pan tiene gluten.
-	 *
-	 * @param el campo para preguntar si tiene gluten el pan seleccionado.
-	 */
-	public void setTieneGluten(JTextField tieneGluten) {
-		this.tieneGluten = tieneGluten;
-	}
-
-	/**
-	 * Obtiene el campo de texto si el pan tiene levadura.
-	 *
-	 * @return el campo de texto tiene levadura.
+	 * Obtiene el campo de texto que indica si el producto contiene levadura.
+	 * 
+	 * @return el campo de texto que indica si el producto tiene levadura.
 	 */
 	public JTextField getTieneLevadura() {
 		return tieneLevadura;
 	}
 
 	/**
-	 * Establece el campo de texto si el pan tiene levadura.
-	 *
-	 * @param el campo para preguntar si tiene levadura el pan seleccionado.
-	 */
-	public void setTieneLevadura(JTextField tieneLevadura) {
-		this.tieneLevadura = tieneLevadura;
-	}
-
-	/**
-	 * Obtiene el campo de texto para preguntar si es dulce.
-	 *
-	 * @return el campo de texto para preguntar si tiene dulce.
+	 * Obtiene el campo de texto que indica si el producto tiene sabor dulce.
+	 * 
+	 * @return el campo de texto que indica si el producto tiene sabor dulce.
 	 */
 	public JTextField getSaborDulce() {
 		return saborDulce;
 	}
 
 	/**
-	 * Establece el campo de texto si el pan es dulce.
-	 *
-	 * @param  el campo de texto si el pan es dulce a establecer.
-	 */
-	public void setEsDulce(JTextField saborDulce) {
-		this.saborDulce = saborDulce;
-	}
-
-	/**
-	 * Obtiene el campo de texto si el pan tiene coco.
-	 *
-	 * @return el campo de texto tiene coco.
+	 * Obtiene el campo de texto que indica si el producto tiene arequipe.
+	 * 
+	 * @return el campo de texto que indica si el producto tiene arequipe.
 	 */
 	public JTextField getTieneArequipe() {
 		return tieneArequipe;
 	}
 
 	/**
-	 * Establece el campo de texto si el pan tiene coco.
-	 *
-	 * @param tiene coco el campo de texto tiene coco a establecer.
-	 */
-	public void setTieneArequipe(JTextField tieneArequipe) {
-		this.tieneArequipe = tieneArequipe;
-	}
-
-	/**
-	 * Obtiene el campo de texto si el pan el salado.
-	 *
-	 * @return el campo de texto para es salado.
+	 * Obtiene el campo de texto que indica el tipo de queso del producto.
+	 * 
+	 * @return el campo de texto que contiene el tipo de queso.
 	 */
 	public JTextField getTipoQueso() {
 		return tipoQueso;
 	}
 
 	/**
-	 * Establece el campo de texto si el pan es salado.
-	 *
-	 * @param atributoPropio3 el campo de texto es salado a establecer.
-	 */
-	public void setTipoQueso(JTextField tipoQueso) {
-		this.tipoQueso = tipoQueso;
-	}
-
-	/**
-	 * Obtiene el campo de texto si el pan tiene queso.
-	 *
-	 * @return el campo de texto tiene queso.
+	 * Obtiene el campo de texto que indica si el producto es gratinado.
+	 * 
+	 * @return el campo de texto que indica si el producto es gratinado.
 	 */
 	public JTextField getEsGratinado() {
 		return esGratinado;
 	}
 
 	/**
-	 * Establece el campo de texto si el pan tiene queso.
-	 *
-	 * @param atributoPropio3 el campo de texto tiene queso a establecer.
+	 * Obtiene el campo de texto que indica si el producto contiene siete granos.
+	 * 
+	 * @return el campo de texto que indica si el producto tiene siete granos.
 	 */
-	public void setEsGratinado(JTextField esGratinado) {
-		this.esGratinado = esGratinado;
-	}
-	/**
-	 * Obtiene el campo de texto si el pan tiene siete granos.
-	 *
-	 * @return el campo de texto tiene siete granos.
-	 */
-
 	public JTextField getTieneSieteGranos() {
 		return tieneSieteGranos;
 	}
 
 	/**
-	 * Establece el campo de texto si el pan tiene siete granos ,,,.
-	 *
-	 * @param tiene siete granos el campo de texto tiene siete granos a establecer.
-	 */
-	public void setTieneSieteGranos(JTextField tieneSieteGranos) {
-		this.tieneSieteGranos = tieneSieteGranos;
-	}
-	
-	/**
-	 * Obtiene el campo de texto si el pan tiene bocadillo.
-	 *
-	 * @return el campo de texto tiene bocadillo.
+	 * Obtiene el campo de texto que indica si el producto contiene frutos secos.
+	 * 
+	 * @return el campo de texto que indica si el producto tiene frutos secos.
 	 */
 	public JTextField getTieneFrutosSecos() {
 		return tieneFrutosSecos;
 	}
 
 	/**
-	 * Establece el campo de texto si el pan tiene bocadillo.
-	 *
-	 * @param tiene bocadillo el campo de texto tiene bocadillo a establecer.
-	 */
-	public void setTieneFrutosSecos(JTextField tieneFrutosSecos) {
-		this.tieneFrutosSecos = tieneFrutosSecos;
-	}
-	/**
-	 * Obtiene el campo de texto si el pan tiene bocadillo.
-	 *
-	 * @return el campo de texto tiene bocadillo.
+	 * Obtiene el campo de texto que indica si el producto es un croissant.
+	 * 
+	 * @return el campo de texto que indica si el producto es un croissant.
 	 */
 	public JTextField getEsCroissant() {
 		return esCroissant;
 	}
 
 	/**
-	 * Establece el campo de texto si el pan tiene bocadillo.
-	 *
-	 * @param tiene bocadillo el campo de texto tiene bocadillo a establecer.
-	 */
-	public void setCroissant(JTextField esCroissant) {
-		this.esCroissant = esCroissant;
-	}
-	
-	/**
-	 * Obtiene el campo de texto si el pan tiene bocadillo.
-	 *
-	 * @return el campo de texto tiene bocadillo.
+	 * Obtiene el campo de texto que indica si el producto contiene carne.
+	 * 
+	 * @return el campo de texto que indica si el producto tiene carne.
 	 */
 	public JTextField getTieneCarne() {
 		return tieneCarne;
 	}
 
 	/**
-	 * Establece el campo de texto si el pan tiene bocadillo.
-	 *
-	 * @param tiene bocadillo el campo de texto tiene bocadillo a establecer.
-	 */
-	public void setTieneCarne(JTextField tieneCarne) {
-		this.tieneCarne = tieneCarne;
-	}
-
-	
-	
-	/**
-	 * Obtiene el botón de volver.
-	 *
-	 * @return el botón btnVolver.
+	 * Obtiene el botón "Volver".
+	 * 
+	 * @return el botón que permite regresar a la pantalla anterior.
 	 */
 	public JButton getBtnVolver() {
 		return btnVolver;
 	}
 
 	/**
-	 * Establece el botón de volver.
-	 *
-	 * @param btnVolver el botón btnVolver a establecer.
-	 */
-	public void setBtnVolver(JButton btnVolver) {
-		this.btnVolver = btnVolver;
-	}
-
-	/**
-	 * Obtiene el botón de agregar.
-	 *
-	 * @return el botón btnAgregar.
+	 * Obtiene el botón "Agregar".
+	 * 
+	 * @return el botón que permite agregar un nuevo producto.
 	 */
 	public JButton getBtnAgregar() {
 		return btnAgregar;
 	}
 
 	/**
-	 * Establece el botón de agregar.
-	 *
-	 * @param btnAgregar el botón btnAgregar a establecer.
+	 * Obtiene el botón "Actualizar".
+	 * 
+	 * @return el botón que permite actualizar la información de un producto
+	 *         existente.
 	 */
-	public void setBtnAgregar(JButton btnAgregar) {
-		this.btnAgregar = btnAgregar;
+	public JButton getBtnActualizar() {
+		return btnActualizar;
 	}
 
 	/**
-	 * Obtiene el botón para abrir el JFileChooser.
-	 *
-	 * @return el botón btnJFileChooser.
+	 * Obtiene la etiqueta de imagen del producto.
+	 * 
+	 * @return la etiqueta que muestra la imagen del producto.
 	 */
+	public JLabel getImagenProducto() {
+		return imagenProducto;
+	}
 
+	/**
+	 * Obtiene la etiqueta de imagen para agregar un pan dulce.
+	 * 
+	 * @return la etiqueta que muestra la imagen para agregar un pan dulce.
+	 */
+	public JLabel getImagenAgregarC() {
+		return imagenAgregarC;
+	}
 
+	/**
+	 * Obtiene la etiqueta de imagen para agregar un pan de queso.
+	 * 
+	 * @return la etiqueta que muestra la imagen para agregar un pan de queso.
+	 */
+	public JLabel getImagenAgregarV() {
+		return imagenAgregarV;
+	}
+
+	/**
+	 * Obtiene la etiqueta de imagen para agregar un pan integral.
+	 * 
+	 * @return la etiqueta que muestra la imagen para agregar un pan integral.
+	 */
+	public JLabel getImagenAgregarJ() {
+		return imagenAgregarJ;
+	}
+
+	/**
+	 * Obtiene la etiqueta de imagen para agregar un pan hojaldre.
+	 * 
+	 * @return la etiqueta que muestra la imagen para agregar un pan hojaldre.
+	 */
+	public JLabel getImagenAgregarP() {
+		return imagenAgregarP;
+	}
 }

@@ -3,14 +3,14 @@ package co.edu.unbosque.controller;
 import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
-import java.text.ParseException;
+
 
 import co.edu.unbosque.model.ModelFacade;
 import co.edu.unbosque.model.PanDulce;
 import co.edu.unbosque.model.PanDulceDTO;
 import co.edu.unbosque.model.PanHojaldrado;
 import co.edu.unbosque.model.PanQuesoDTO;
-import co.edu.unbosque.model.persistence.DataMapper;
+
 import co.edu.unbosque.model.PanIntegralDTO;
 import co.edu.unbosque.model.PanQueso;
 import co.edu.unbosque.model.PanHojaldradoDTO;
@@ -329,8 +329,6 @@ public class Controller implements ActionListener {
 				tempPanDulce.setNombre(nombreProducto);
 				// Busca el producto usando el método find
 				PanDulce panDulceEncontrado = mf.getPanDulceDAO().find(tempPanDulce);
-				
-
 
 				// Verifica si se encontró el producto
 				if (panDulceEncontrado != null) { // Si el producto no es null, se encontró
@@ -344,17 +342,17 @@ public class Controller implements ActionListener {
 					newPanQueso = false;
 					newPanIntegral = false;
 					newPanHojaldrado = false;
-					
-		            anteriorPanDulce = new PanDulceDTO();
-		            anteriorPanDulce.setNombre(panDulceEncontrado.getNombre());
-		            anteriorPanDulce.setCantidad(panDulceEncontrado.getCantidad());
-		            anteriorPanDulce.setPeso(panDulceEncontrado.getPeso());
-		            anteriorPanDulce.setPrecio(panDulceEncontrado.getPrecio());
-		            anteriorPanDulce.setTieneGluten(panDulceEncontrado.isTieneGluten());
-		            anteriorPanDulce.setTieneLevadura(panDulceEncontrado.isTieneLevadura());
-		            anteriorPanDulce.setTieneArequipe(panDulceEncontrado.isTieneArequipe());
-		            anteriorPanDulce.setSaborDulce(panDulceEncontrado.getSaborDulce());
-					
+
+					anteriorPanDulce = new PanDulceDTO();
+					anteriorPanDulce.setNombre(panDulceEncontrado.getNombre());
+					anteriorPanDulce.setCantidad(panDulceEncontrado.getCantidad());
+					anteriorPanDulce.setPeso(panDulceEncontrado.getPeso());
+					anteriorPanDulce.setPrecio(panDulceEncontrado.getPrecio());
+					anteriorPanDulce.setTieneGluten(panDulceEncontrado.isTieneGluten());
+					anteriorPanDulce.setTieneLevadura(panDulceEncontrado.isTieneLevadura());
+					anteriorPanDulce.setTieneArequipe(panDulceEncontrado.isTieneArequipe());
+					anteriorPanDulce.setSaborDulce(panDulceEncontrado.getSaborDulce());
+
 				} else {
 					vf.getCon().mostrarAlerta("Ingrese un nombre valido y que exista en la lista");
 				}
@@ -388,16 +386,16 @@ public class Controller implements ActionListener {
 					newPanQueso = true;
 					newPanIntegral = false;
 					newPanHojaldrado = false;
-					
-		            anteriorPanQueso = new PanQuesoDTO();
-		            anteriorPanQueso.setNombre(panQuesoEncontrado.getNombre());
-		            anteriorPanQueso.setCantidad(panQuesoEncontrado.getCantidad());
-		            anteriorPanQueso.setPeso(panQuesoEncontrado.getPeso());
-		            anteriorPanQueso.setPrecio(panQuesoEncontrado.getPrecio());
-		            anteriorPanQueso.setTieneGluten(panQuesoEncontrado.isTieneGluten());
-		            anteriorPanQueso.setTieneLevadura(panQuesoEncontrado.isTieneLevadura());
-		            anteriorPanQueso.setTipoQueso(panQuesoEncontrado.getTipoQueso());
-		            anteriorPanQueso.setEsGratinado(panQuesoEncontrado.isEsGratinado());
+
+					anteriorPanQueso = new PanQuesoDTO();
+					anteriorPanQueso.setNombre(panQuesoEncontrado.getNombre());
+					anteriorPanQueso.setCantidad(panQuesoEncontrado.getCantidad());
+					anteriorPanQueso.setPeso(panQuesoEncontrado.getPeso());
+					anteriorPanQueso.setPrecio(panQuesoEncontrado.getPrecio());
+					anteriorPanQueso.setTieneGluten(panQuesoEncontrado.isTieneGluten());
+					anteriorPanQueso.setTieneLevadura(panQuesoEncontrado.isTieneLevadura());
+					anteriorPanQueso.setTipoQueso(panQuesoEncontrado.getTipoQueso());
+					anteriorPanQueso.setEsGratinado(panQuesoEncontrado.isEsGratinado());
 				} else {
 					vf.getCon().mostrarAlerta("Ingrese un nombre valido y que exista en la lista");
 				}
@@ -430,16 +428,16 @@ public class Controller implements ActionListener {
 					newPanQueso = false;
 					newPanIntegral = true;
 					newPanHojaldrado = false;
-					
-		            anteriorPanIntegral = new PanIntegralDTO();
-		            anteriorPanIntegral.setNombre(panIntegralEncontrado.getNombre());
-		            anteriorPanIntegral.setCantidad(panIntegralEncontrado.getCantidad());
-		            anteriorPanIntegral.setPeso(panIntegralEncontrado.getPeso());
-		            anteriorPanIntegral.setPrecio(panIntegralEncontrado.getPrecio());
-		            anteriorPanIntegral.setTieneGluten(panIntegralEncontrado.isTieneGluten());
-		            anteriorPanIntegral.setTieneLevadura(panIntegralEncontrado.isTieneLevadura());
-		            anteriorPanIntegral.setTieneSieteGranos(panIntegralEncontrado.isTieneSieteGranos());
-		            anteriorPanIntegral.setTieneFrutosSecos(panIntegralEncontrado.isTieneFrutosSecos());
+
+					anteriorPanIntegral = new PanIntegralDTO();
+					anteriorPanIntegral.setNombre(panIntegralEncontrado.getNombre());
+					anteriorPanIntegral.setCantidad(panIntegralEncontrado.getCantidad());
+					anteriorPanIntegral.setPeso(panIntegralEncontrado.getPeso());
+					anteriorPanIntegral.setPrecio(panIntegralEncontrado.getPrecio());
+					anteriorPanIntegral.setTieneGluten(panIntegralEncontrado.isTieneGluten());
+					anteriorPanIntegral.setTieneLevadura(panIntegralEncontrado.isTieneLevadura());
+					anteriorPanIntegral.setTieneSieteGranos(panIntegralEncontrado.isTieneSieteGranos());
+					anteriorPanIntegral.setTieneFrutosSecos(panIntegralEncontrado.isTieneFrutosSecos());
 				} else {
 					vf.getCon().mostrarAlerta("Ingrese un nombre valido y que exista en la lista");
 				}
@@ -472,17 +470,17 @@ public class Controller implements ActionListener {
 					newPanQueso = false;
 					newPanIntegral = false;
 					newPanHojaldrado = true;
-					
-		            anteriorPanHojaldrado = new PanHojaldradoDTO();
-		            anteriorPanHojaldrado.setNombre(panHojaldradoEncontrado.getNombre());
-		            anteriorPanHojaldrado.setCantidad(panHojaldradoEncontrado.getCantidad());
-		            anteriorPanHojaldrado.setPeso(panHojaldradoEncontrado.getPeso());
-		            anteriorPanHojaldrado.setPrecio(panHojaldradoEncontrado.getPrecio());
-		            anteriorPanHojaldrado.setTieneGluten(panHojaldradoEncontrado.isTieneGluten());
-		            anteriorPanHojaldrado.setTieneLevadura(panHojaldradoEncontrado.isTieneLevadura());
-		            anteriorPanHojaldrado.setEsCroissant(panHojaldradoEncontrado.isEsCroissant());
-		            anteriorPanHojaldrado.setTieneCarne(panHojaldradoEncontrado.isTieneCarne());
-					
+
+					anteriorPanHojaldrado = new PanHojaldradoDTO();
+					anteriorPanHojaldrado.setNombre(panHojaldradoEncontrado.getNombre());
+					anteriorPanHojaldrado.setCantidad(panHojaldradoEncontrado.getCantidad());
+					anteriorPanHojaldrado.setPeso(panHojaldradoEncontrado.getPeso());
+					anteriorPanHojaldrado.setPrecio(panHojaldradoEncontrado.getPrecio());
+					anteriorPanHojaldrado.setTieneGluten(panHojaldradoEncontrado.isTieneGluten());
+					anteriorPanHojaldrado.setTieneLevadura(panHojaldradoEncontrado.isTieneLevadura());
+					anteriorPanHojaldrado.setEsCroissant(panHojaldradoEncontrado.isEsCroissant());
+					anteriorPanHojaldrado.setTieneCarne(panHojaldradoEncontrado.isTieneCarne());
+
 				} else {
 					vf.getCon().mostrarAlerta("Ingrese un nombre valido y que exista en la lista");
 				}
@@ -616,11 +614,9 @@ public class Controller implements ActionListener {
 				String levadura = (vf.getPrincipal().getPanelEntrada().getTieneLevadura().getText());
 				boolean tieneLevadura = vf.getCon().readBoolean(levadura);
 
-				
-
 				String arequipe = (vf.getPrincipal().getPanelEntrada().getTieneArequipe().getText());
 				boolean tieneArequipe = vf.getCon().readBoolean(arequipe);
-				
+
 				String saborDulce = vf.getPrincipal().getPanelEntrada().getSaborDulce().getText();
 
 				mf.getPanDulceDAO().add(new PanDulceDTO(cantidadPan, nombre, peso, precio, tieneGluten, tieneLevadura,
@@ -647,7 +643,8 @@ public class Controller implements ActionListener {
 				String gratinado = (vf.getPrincipal().getPanelEntrada().getEsGratinado().getText());
 				boolean esGratinado = vf.getCon().readBoolean(gratinado);
 
-				mf.getPanQuesoDAO().add(new PanQuesoDTO(cantidadPan1, nombre1, peso1, precio1, tieneGluten1, tieneLevadura1, tipoQueso, esGratinado));
+				mf.getPanQuesoDAO().add(new PanQuesoDTO(cantidadPan1, nombre1, peso1, precio1, tieneGluten1,
+						tieneLevadura1, tipoQueso, esGratinado));
 				vf.getCon().mostrarMensajeEmergente("Producto creado exitosamente");
 
 			}
@@ -664,14 +661,15 @@ public class Controller implements ActionListener {
 
 				String levadura = (vf.getPrincipal().getPanelEntrada().getTieneLevadura().getText());
 				boolean tieneLevadura2 = vf.getCon().readBoolean(levadura);
-              
+
 				String sieteGranos = (vf.getPrincipal().getPanelEntrada().getTieneSieteGranos().getText());
-                boolean tieneSieteGranos=vf.getCon().readBoolean(sieteGranos);
-                
+				boolean tieneSieteGranos = vf.getCon().readBoolean(sieteGranos);
+
 				String frutosSecos = (vf.getPrincipal().getPanelEntrada().getTieneFrutosSecos().getText());
 				boolean tieneFrutosSecos = vf.getCon().readBoolean(frutosSecos);
 
-				mf.getPanIntegralDAO().add(new PanIntegralDTO(cantidadPan2, nombre2, peso2, precio2, tieneGluten2, tieneLevadura2, tieneSieteGranos, tieneFrutosSecos));
+				mf.getPanIntegralDAO().add(new PanIntegralDTO(cantidadPan2, nombre2, peso2, precio2, tieneGluten2,
+						tieneLevadura2, tieneSieteGranos, tieneFrutosSecos));
 				vf.getCon().mostrarMensajeEmergente("Producto creado exitosamente");
 
 			}
@@ -690,13 +688,13 @@ public class Controller implements ActionListener {
 				boolean tieneLevadura3 = vf.getCon().readBoolean(levadura);
 
 				String croissant = (vf.getPrincipal().getPanelEntrada().getEsCroissant().getText());
-                boolean esCroissant=vf.getCon().readBoolean(croissant);
-                
+				boolean esCroissant = vf.getCon().readBoolean(croissant);
+
 				String carne = (vf.getPrincipal().getPanelEntrada().getTieneCarne().getText());
 				boolean tieneCarne = vf.getCon().readBoolean(carne);
-				mf.getPanHojaldradoDAO().add(new PanHojaldradoDTO(cantidadPan3, nombre3, peso3, precio3, tieneGluten3, tieneLevadura3, esCroissant, tieneCarne));
+				mf.getPanHojaldradoDAO().add(new PanHojaldradoDTO(cantidadPan3, nombre3, peso3, precio3, tieneGluten3,
+						tieneLevadura3, esCroissant, tieneCarne));
 				vf.getCon().mostrarMensajeEmergente("Producto creado exitosamente");
-
 
 			}
 			break;
@@ -719,23 +717,25 @@ public class Controller implements ActionListener {
 
 				String arequipe = (vf.getPrincipal().getPanelEntrada().getTieneArequipe().getText());
 				boolean tieneArequipe = vf.getCon().readBoolean(arequipe);
-				 // Crea un objeto PanDulceDTO con los nuevos datos
-		        PanDulceDTO nuevoPanDulce = new PanDulceDTO(cantidadPan, nombre, peso, precio, tieneGluten, tieneLevadura,  tieneArequipe, saborDulce);
+				// Crea un objeto PanDulceDTO con los nuevos datos
+				PanDulceDTO nuevoPanDulce = new PanDulceDTO(cantidadPan, nombre, peso, precio, tieneGluten,
+						tieneLevadura, tieneArequipe, saborDulce);
 
-		        if (anteriorPanDulce != null) {
-		            // Llama al método update del DAO con los objetos anterior y nuevo
-		            boolean actualizado = mf.getPanDulceDAO().update(anteriorPanDulce, nuevoPanDulce);
+				if (anteriorPanDulce != null) {
+					// Llama al método update del DAO con los objetos anterior y nuevo
+					boolean actualizado = mf.getPanDulceDAO().update(anteriorPanDulce, nuevoPanDulce);
 
-		            // Muestra mensajes dependiendo del resultado
-		            if (actualizado) {
-		                vf.getCon().mostrarMensajeEmergente("Producto actualizado exitosamente");
-		            } else {
-		                vf.getCon().mostrarAlerta("Error al actualizar el producto. Verifique que los datos sean correctos.");
-		            }
-		        } else {
-		            vf.getCon().mostrarAlerta("No se encontró el producto anterior para actualizar.");
-		        }
-		    }
+					// Muestra mensajes dependiendo del resultado
+					if (actualizado) {
+						vf.getCon().mostrarMensajeEmergente("Producto actualizado exitosamente");
+					} else {
+						vf.getCon().mostrarAlerta(
+								"Error al actualizar el producto. Verifique que los datos sean correctos.");
+					}
+				} else {
+					vf.getCon().mostrarAlerta("No se encontró el producto anterior para actualizar.");
+				}
+			}
 			if (panQueso == true && newPanQueso == true) {
 				int cantidadPan1 = Integer.parseInt(vf.getPrincipal().getPanelEntrada().getCantidadPan().getText());
 
@@ -753,24 +753,26 @@ public class Controller implements ActionListener {
 
 				String gratinado = (vf.getPrincipal().getPanelEntrada().getEsGratinado().getText());
 				boolean esGratinado = vf.getCon().readBoolean(gratinado);
-				
-				PanQuesoDTO nuevoPanQueso = new PanQuesoDTO(cantidadPan1, nombre1, peso1, precio1, tieneGluten1, tieneLevadura1, tipoQueso, esGratinado);
-				
-		        if (anteriorPanQueso != null) {
-		            // Llama al método update del DAO con los objetos anterior y nuevo
-		            boolean actualizado = mf.getPanQuesoDAO().update(anteriorPanQueso, nuevoPanQueso);
 
-		            // Muestra mensajes dependiendo del resultado
-		            if (actualizado) {
-		                vf.getCon().mostrarMensajeEmergente("Producto actualizado exitosamente");
-		            } else {
-		                vf.getCon().mostrarAlerta("Error al actualizar el producto. Verifique que los datos sean correctos.");
-		            }
-		        } else {
-		            vf.getCon().mostrarAlerta("No se encontró el producto anterior para actualizar.");
-		        }
+				PanQuesoDTO nuevoPanQueso = new PanQuesoDTO(cantidadPan1, nombre1, peso1, precio1, tieneGluten1,
+						tieneLevadura1, tipoQueso, esGratinado);
+
+				if (anteriorPanQueso != null) {
+					// Llama al método update del DAO con los objetos anterior y nuevo
+					boolean actualizado = mf.getPanQuesoDAO().update(anteriorPanQueso, nuevoPanQueso);
+
+					// Muestra mensajes dependiendo del resultado
+					if (actualizado) {
+						vf.getCon().mostrarMensajeEmergente("Producto actualizado exitosamente");
+					} else {
+						vf.getCon().mostrarAlerta(
+								"Error al actualizar el producto. Verifique que los datos sean correctos.");
+					}
+				} else {
+					vf.getCon().mostrarAlerta("No se encontró el producto anterior para actualizar.");
+				}
 			}
-			
+
 			if (panIntegral == true && newPanIntegral == true) {
 				int cantidadPan2 = Integer.parseInt(vf.getPrincipal().getPanelEntrada().getCantidadPan().getText());
 
@@ -783,29 +785,30 @@ public class Controller implements ActionListener {
 
 				String levadura = (vf.getPrincipal().getPanelEntrada().getTieneLevadura().getText());
 				boolean tieneLevadura2 = vf.getCon().readBoolean(levadura);
-              
+
 				String sieteGranos = (vf.getPrincipal().getPanelEntrada().getTieneSieteGranos().getText());
-                boolean tieneSieteGranos=vf.getCon().readBoolean(sieteGranos);
-                
+				boolean tieneSieteGranos = vf.getCon().readBoolean(sieteGranos);
+
 				String frutosSecos = (vf.getPrincipal().getPanelEntrada().getTieneFrutosSecos().getText());
 				boolean tieneFrutosSecos = vf.getCon().readBoolean(frutosSecos);
-				
-				PanIntegralDTO nuevoPanIntegral= new PanIntegralDTO(cantidadPan2, nombre2, peso2, precio2, tieneGluten2, tieneLevadura2, tieneSieteGranos, tieneFrutosSecos);
-				
 
-		        if (anteriorPanIntegral != null) {
-		            // Llama al método update del DAO con los objetos anterior y nuevo
-		            boolean actualizado = mf.getPanIntegralDAO().update(anteriorPanIntegral, nuevoPanIntegral);
+				PanIntegralDTO nuevoPanIntegral = new PanIntegralDTO(cantidadPan2, nombre2, peso2, precio2,
+						tieneGluten2, tieneLevadura2, tieneSieteGranos, tieneFrutosSecos);
 
-		            // Muestra mensajes dependiendo del resultado
-		            if (actualizado) {
-		                vf.getCon().mostrarMensajeEmergente("Producto actualizado exitosamente");
-		            } else {
-		                vf.getCon().mostrarAlerta("Error al actualizar el producto. Verifique que los datos sean correctos.");
-		            }
-		        } else {
-		            vf.getCon().mostrarAlerta("No se encontró el producto anterior para actualizar.");
-		        }
+				if (anteriorPanIntegral != null) {
+					// Llama al método update del DAO con los objetos anterior y nuevo
+					boolean actualizado = mf.getPanIntegralDAO().update(anteriorPanIntegral, nuevoPanIntegral);
+
+					// Muestra mensajes dependiendo del resultado
+					if (actualizado) {
+						vf.getCon().mostrarMensajeEmergente("Producto actualizado exitosamente");
+					} else {
+						vf.getCon().mostrarAlerta(
+								"Error al actualizar el producto. Verifique que los datos sean correctos.");
+					}
+				} else {
+					vf.getCon().mostrarAlerta("No se encontró el producto anterior para actualizar.");
+				}
 			}
 			if (panHojaldrado == true && newPanHojaldrado == true) {
 				int cantidadPan3 = Integer.parseInt(vf.getPrincipal().getPanelEntrada().getCantidadPan().getText());
@@ -821,34 +824,37 @@ public class Controller implements ActionListener {
 				boolean tieneLevadura3 = vf.getCon().readBoolean(levadura);
 
 				String croissant = (vf.getPrincipal().getPanelEntrada().getEsCroissant().getText());
-                boolean esCroissant=vf.getCon().readBoolean(croissant);
-                
+				boolean esCroissant = vf.getCon().readBoolean(croissant);
+
 				String carne = (vf.getPrincipal().getPanelEntrada().getTieneCarne().getText());
 				boolean tieneCarne = vf.getCon().readBoolean(carne);
-				
-				PanHojaldradoDTO nuevoPanHojaldrado= new PanHojaldradoDTO(cantidadPan3, nombre3, peso3, precio3, tieneGluten3, tieneLevadura3, esCroissant, tieneCarne);
-				
+
+				PanHojaldradoDTO nuevoPanHojaldrado = new PanHojaldradoDTO(cantidadPan3, nombre3, peso3, precio3,
+						tieneGluten3, tieneLevadura3, esCroissant, tieneCarne);
+
 				if (anteriorPanHojaldrado != null) {
-		            // Llama al método update del DAO con los objetos anterior y nuevo
-		            boolean actualizado = mf.getPanHojaldradoDAO().update(anteriorPanHojaldrado, nuevoPanHojaldrado);
+					// Llama al método update del DAO con los objetos anterior y nuevo
+					boolean actualizado = mf.getPanHojaldradoDAO().update(anteriorPanHojaldrado, nuevoPanHojaldrado);
 
-		            // Muestra mensajes dependiendo del resultado
-		            if (actualizado) {
-		                vf.getCon().mostrarMensajeEmergente("Producto actualizado exitosamente");
-		            } else {
-		                vf.getCon().mostrarAlerta("Error al actualizar el producto. Verifique que los datos sean correctos.");
-		            }
-		        } else {
-		            vf.getCon().mostrarAlerta("No se encontró el producto anterior para actualizar.");
-		        }
+					// Muestra mensajes dependiendo del resultado
+					if (actualizado) {
+						vf.getCon().mostrarMensajeEmergente("Producto actualizado exitosamente");
+					} else {
+						vf.getCon().mostrarAlerta(
+								"Error al actualizar el producto. Verifique que los datos sean correctos.");
+					}
+				} else {
+					vf.getCon().mostrarAlerta("No se encontró el producto anterior para actualizar.");
+				}
 			}
+
 			
 			
 			
 			
 			}
+
 		}
-
-}
+	}
 
 

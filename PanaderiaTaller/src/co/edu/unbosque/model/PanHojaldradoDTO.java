@@ -1,6 +1,6 @@
 package co.edu.unbosque.model;
 
-public class PanHojaldradoDTO extends Pan {
+public class PanHojaldradoDTO extends PanDTO {
 
 	 private boolean  esCroissant;
 	 private boolean tieneCarne;
