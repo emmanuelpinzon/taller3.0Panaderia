@@ -115,8 +115,14 @@ public class PanDulce extends Pan {
 	@Override
 	public String toString() {
 
+
 		
-	    return "\nPan Dulce 🍬"+ super.toString() + // Llama al toString() de la clase padre para incluir sus atributos
+	   
+
+	    return "\n╔════════════════════════════════════════╗\n" +
+		          "            Pan Dulce 🍬               \n" +
+		           "╚══════════════════════════════════════╝\n" + super.toString() + // Llama al toString() de la clase padre para incluir sus atributos
+
 	           "🔹 Tiene Arequipe : " + (tieneArequipe ? "Sí" : "No") + "\n" +
 	           "🔹 Sabor Dulce    : " + saborDulce + "\n" +
 	           "═════════════════════════════════════════\n";

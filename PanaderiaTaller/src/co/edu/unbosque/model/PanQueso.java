@@ -114,7 +114,9 @@ public class PanQueso extends Pan {
 	 */
 	@Override
 	public String toString() {
-	    return "\n🧀 Pan Queso 🥖" + super.toString() +  // Llama al toString() de la clase padre
+	    return "\n╔════════════════════════════════════════╗\n" +
+		          "         🧀 Pan Queso 🥖             \n" +
+		           "╚══════════════════════════════════════╝\n" +  super.toString() +  // Llama al toString() de la clase padre
 	           "🔹 Tipo de Queso    : " + tipoQueso + "\n" +
 	           "🔹 ¿Es Gratinado?   : " + (esGratinado ? "Sí" : "No") + "\n" +
 	           "═════════════════════════════════════════\n";

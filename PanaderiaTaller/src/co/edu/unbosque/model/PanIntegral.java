@@ -115,7 +115,9 @@ public class PanIntegral extends Pan {
 	 */
 	@Override
 	public String toString() {
-	    return "\n🍞 Pan Integral 🌾" + super.toString() +  // Llama al toString() de la clase padre
+	    return "\n╔════════════════════════════════════════╗\n" +
+		          "         🍞 Pan Integral 🌾             \n" +
+		           "╚══════════════════════════════════════╝\n" + super.toString() +  // Llama al toString() de la clase padre
 	           "🔹 ¿Tiene Siete Granos?  : " + (tieneSieteGranos ? "Sí" : "No") + "\n" +
 	           "🔹 ¿Tiene Frutos Secos?  : " + (tieneFrutosSecos ? "Sí" : "No") + "\n" +
 	           "═════════════════════════════════════════\n";
