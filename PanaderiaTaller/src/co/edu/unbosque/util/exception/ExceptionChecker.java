@@ -3,41 +3,91 @@ package co.edu.unbosque.util.exception;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * ExceptionChecker proporciona métodos estáticos para verificar condiciones y
+ * formatos de entrada, lanzando excepciones personalizadas cuando las
+ * condiciones no se cumplen.
+ * 
+ * <p>
+ * Este utilitario se utiliza para validar datos antes de ser procesados por la
+ * aplicación.
+ * </p>
+ * 
+ * @author Emmanuel
+ * @version 1.0
+ */
 public class ExceptionChecker {
-public static void verificarNumeroNegativo(int numero) throws NegativeNumberException {
-	if(numero<0) {
-		throw new NegativeNumberException();
-	}
-}
 
-public static void verificarNumeroEntero(int numero1) throws VerifyNonDecimalNumberException {
-	Pattern p = Pattern.compile("[\\D]");
-	Matcher m = p.matcher(String.valueOf(numero1));
-	if (m.find()) {
-		throw new VerifyNonDecimalNumberException();
+	/**
+	 * Verifica si un número es negativo. Si es negativo, lanza una excepción.
+	 * 
+	 * @param numero El número a verificar.
+	 * @throws NegativeNumberException Si el número es negativo.
+	 */
+	public static void verificarNumeroNegativo(int numero) throws NegativeNumberException {
+		if (numero < 0) {
+			throw new NegativeNumberException();
+		}
 	}
-}
 
-public static void checkCondition(String condition ) throws InvalidBooleanStateException {
-if(!condition.equalsIgnoreCase("si")&& !condition.equalsIgnoreCase("no")) {
-	throw new InvalidBooleanStateException();
-}
-}
-public static void checkWord(String word) throws InvalidWordException {
-	Pattern p = Pattern.compile("[^a-zA-Z ]");
-	Matcher m = p.matcher(word);
-	
-	if(m.find()) {
-		throw new InvalidWordException();
+	/**
+	 * Verifica si un número es un entero válido. Si contiene algún carácter no
+	 * numérico, lanza una excepción.
+	 * 
+	 * @param numero1 El número a verificar.
+	 * @throws VerifyNonDecimalNumberException Si el número no es un entero.
+	 */
+	public static void verificarNumeroEntero(int numero1) throws VerifyNonDecimalNumberException {
+		Pattern p = Pattern.compile("[\\D]");
+		Matcher m = p.matcher(String.valueOf(numero1));
+		if (m.find()) {
+			throw new VerifyNonDecimalNumberException();
+		}
 	}
-}
-public static void checkDouble(double numero) throws InvalidDoubleFormatException {
-    String numeroComoString = String.valueOf(numero);
-    Pattern p = Pattern.compile("[^0-9.]");
-    Matcher m = p.matcher(numeroComoString);
-    
-    if (m.find()) {
-    	throw new InvalidDoubleFormatException();
-    }
-}
+
+	/**
+	 * Verifica si una cadena es un estado booleano válido ("si" o "no").
+	 * 
+	 * @param condition La cadena a verificar.
+	 * @throws InvalidBooleanStateException Si la condición no es "si" o "no".
+	 */
+	public static void checkCondition(String condition) throws InvalidBooleanStateException {
+		if (!condition.equalsIgnoreCase("si") && !condition.equalsIgnoreCase("no")) {
+			throw new InvalidBooleanStateException();
+		}
+	}
+
+	/**
+	 * Verifica si una palabra contiene solo letras. Si contiene caracteres no
+	 * válidos, lanza una excepción.
+	 * 
+	 * @param word La palabra a verificar.
+	 * @throws InvalidWordException Si la palabra contiene caracteres no válidos.
+	 */
+	public static void checkWord(String word) throws InvalidWordException {
+		Pattern p = Pattern.compile("[^a-zA-Z ]");
+		Matcher m = p.matcher(word);
+
+		if (m.find()) {
+			throw new InvalidWordException();
+		}
+	}
+
+	/**
+	 * Verifica el formato de un número decimal. Si contiene caracteres no válidos,
+	 * lanza una excepción.
+	 * 
+	 * @param numero El número a verificar.
+	 * @throws InvalidDoubleFormatException Si el número no tiene un formato decimal
+	 *                                      válido.
+	 */
+	public static void checkDouble(double numero) throws InvalidDoubleFormatException {
+		String numeroComoString = String.valueOf(numero);
+		Pattern p = Pattern.compile("[^0-9.]");
+		Matcher m = p.matcher(numeroComoString);
+
+		if (m.find()) {
+			throw new InvalidDoubleFormatException();
+		}
+	}
 }

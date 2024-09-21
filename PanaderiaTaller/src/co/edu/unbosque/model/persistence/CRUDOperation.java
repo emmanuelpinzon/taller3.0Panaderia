@@ -2,19 +2,71 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
-public interface CRUDOperation<P, N> {// D-> DTO, E->Entidad
+/**
+ * Interfaz CRUDOperation define operaciones básicas para realizar 
+ * operaciones de CRUD (Crear, Leer, Actualizar y Eliminar) en 
+ * entidades de tipo genérico.
+ * 
+ * @param <P> Tipo de objeto de transferencia de datos (DTO)
+ * @param <N> Tipo de objeto de entidad
+ * 
+ * @author Emmanuel
+ * @version 1.0
+ */
+public interface CRUDOperation<P, N> {
 
-	public String ShowAll();// mostrar todo
+    /**
+     * Muestra todos los registros en formato de texto.
+     * 
+     * @return una cadena que representa todos los registros
+     */
+    public String ShowAll(); // mostrar todo
 
-	public ArrayList<P> getAll();// mostrar todo como DTO
+    /**
+     * Obtiene todos los registros como una lista de objetos DTO.
+     * 
+     * @return una lista de objetos DTO
+     */
+    public ArrayList<P> getAll(); // mostrar todo como DTO
 
-	public boolean add(P newdata);// ahora verfico que no haya duplicados
+    /**
+     * Agrega un nuevo registro, verificando que no haya duplicados.
+     * 
+     * @param newdata el nuevo objeto a agregar
+     * @return true si se agregó con éxito, false si hubo un duplicado
+     */
+    public boolean add(P newdata); // ahora verifico que no haya duplicados
 
-	public boolean delete(P toDelete);// eliminar
+    /**
+     * Elimina un registro existente.
+     * 
+     * @param toDelete el objeto a eliminar
+     * @return true si se eliminó con éxito, false si no se encontró
+     */
+    public boolean delete(P toDelete); // eliminar
 
-	public  boolean deleteByName(P delete);
+    /**
+     * Elimina un registro por su nombre.
+     * 
+     * @param delete el objeto a eliminar
+     * @return true si se eliminó con éxito, false si no se encontró
+     */
+    public boolean deleteByName(P delete);
 
-	public N find(N toFind);// buscar, verificar si existe o no; null -> no exite
+    /**
+     * Busca un registro específico.
+     * 
+     * @param toFind el objeto a buscar
+     * @return el objeto encontrado o null si no existe
+     */
+    public N find(N toFind); // buscar, verificar si existe o no; null -> no existe
 
-	public boolean update(P previous, P newData);// actualizar
+    /**
+     * Actualiza un registro existente con nuevos datos.
+     * 
+     * @param previous el objeto a actualizar
+     * @param newData el nuevo objeto con los datos actualizados
+     * @return true si se actualizó con éxito, false si no se encontró
+     */
+    public boolean update(P previous, P newData); // actualizar
 }

@@ -1,8 +1,12 @@
 package co.edu.unbosque.model.persistence;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -12,6 +16,62 @@ public class FileHandler {
 	private static PrintWriter pw;
 	private static File archivo;
 	private static final String FOLDER_NAME = "data";
+
+	// para archivos serializado
+	private static FileOutputStream fos;
+	private static ObjectOutputStream oos;
+	private static FileInputStream fis;
+	private static ObjectInputStream ois;
+
+	public static void writeSerialized(String url, Object content) {// este se va a utilizar para el taller
+		try {
+			archivo = new File(FOLDER_NAME + "/" + url);
+			if (!archivo.exists()) {
+
+				archivo.createNewFile();
+			}
+			fos = new FileOutputStream(archivo);// para cargar
+			oos = new ObjectOutputStream(fos);// para escribit
+			oos.writeObject(content);// escritor
+			fos.close();
+			oos.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("ocurrio un error con la escritura de archivo");
+			// e.printStackTrace();
+
+		}
+	}
+
+	public static Object readSerialized(String url) {// este se va a utilizar para el taller
+		try {
+			archivo = new File(FOLDER_NAME + "/" + url);
+			if (!archivo.exists()) {
+
+				archivo.createNewFile();
+
+			}
+			fis = new FileInputStream(archivo);
+			ois = new ObjectInputStream(fis);
+
+			Object content = ois.readObject();
+			fis.close();
+			ois.close();
+			return content;
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("ocurrio un error con la lectura de archivo serializado");
+			// e.printStackTrace();
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			// e.printStackTrace();
+			System.out.println("error al leer los datos del archivo seriarilzado(class not found)");
+
+		}
+		return null;
+	}
 
 	public static void checkFolder() {
 		archivo = new File(FOLDER_NAME);

@@ -3,6 +3,24 @@ package co.edu.unbosque.view;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+/**
+ * VentanaPrincipal es la clase que representa la ventana principal de la
+ * aplicación. Esta clase extiende JFrame y contiene los paneles necesarios para
+ * la navegación dentro de la aplicación, incluyendo el menú principal, el menú
+ * de gestión y un panel de entrada.
+ * 
+ * <p>
+ * Ejemplo de uso:
+ * </p>
+ * 
+ * <pre>
+ * VentanaPrincipal ventana = new VentanaPrincipal();
+ * ventana.mostrarPanelMenuPrincipal();
+ * </pre>
+ * 
+ * @author Nicole
+ * @version 1.0
+ */
 public class VentanaPrincipal extends JFrame {
 	private PanelMenuPrincipal menuPpal;
 	private PanelMenuGestion menuGestion;
@@ -15,7 +33,6 @@ public class VentanaPrincipal extends JFrame {
 	 * ventana.
 	 */
 	public VentanaPrincipal() {
-
 		setLocation(70, 70);
 		setSize(1280, 720);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -38,6 +55,8 @@ public class VentanaPrincipal extends JFrame {
 	 */
 	public void mostrarPanelMenuPrincipal() {
 		setContentPane(menuPpal);
+		revalidate();
+		repaint();
 	}
 
 	/**
@@ -45,6 +64,8 @@ public class VentanaPrincipal extends JFrame {
 	 */
 	public void mostrarPanelMenuGestion() {
 		setContentPane(menuGestion);
+		revalidate();
+		repaint();
 	}
 
 	/**
@@ -52,6 +73,8 @@ public class VentanaPrincipal extends JFrame {
 	 */
 	public void mostrarPanelEntrada() {
 		setContentPane(panelEntrada);
+		revalidate();
+		repaint();
 	}
 
 	/**
@@ -80,6 +103,4 @@ public class VentanaPrincipal extends JFrame {
 	public PanelEntrada getPanelEntrada() {
 		return panelEntrada;
 	}
-
-
 }

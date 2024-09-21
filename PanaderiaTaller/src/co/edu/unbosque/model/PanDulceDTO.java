@@ -1,6 +1,6 @@
 package co.edu.unbosque.model;
 
-public class PanDulceDTO extends Pan {
+public class PanDulceDTO extends PanDTO {
 
 	private boolean tieneArequipe;
 	private String saborDulce;

@@ -11,8 +11,24 @@ import javax.swing.JPanel;
  * gestión para el sistema. Contiene botones para agregar, mostrar, actualizar,
  * eliminar productos, y volver al menú principal. Además, incluye imágenes de
  * fondo específicas para cada tipo de producto.
+ * 
+ * Este panel permite a los usuarios gestionar productos de manera intuitiva y
+ * eficiente.
+ * 
+ * <p>
+ * Ejemplo de uso:
+ * </p>
+ * 
+ * <pre>
+ * PanelMenuGestion panel = new PanelMenuGestion();
+ * panel.getBtnAgregar().addActionListener(e -> {
+ * 	// Lógica para agregar un nuevo producto
+ * });
+ * </pre>
+ * 
+ * @author Tu Nombre
+ * @version 1.0
  */
-
 public class PanelMenuGestion extends JPanel {
 
 	private JLabel imagenPanDulce, imagenPanQueso, imagenPanIntegral, imagenPanHojaldrado;
@@ -24,11 +40,11 @@ public class PanelMenuGestion extends JPanel {
 	 * producto.
 	 */
 	public PanelMenuGestion() {
-
 		setLayout(null);
 		setVisible(true);
 		setSize(1280, 720);
 
+		// Inicialización de botones
 		btnAgregar = new JButton("agregar");
 		btnAgregar.setBounds(380, 299, 160, 80);
 		btnAgregar.setOpaque(false);
@@ -54,37 +70,13 @@ public class PanelMenuGestion extends JPanel {
 		btnVolver.setOpaque(false);
 		btnVolver.setActionCommand("VOLVER");
 
-		imagenPanDulce = new JLabel();
-		ImageIcon imagenCarnea = new ImageIcon("src/media/MENUPANDULCE.png");
-		Image redimensionado = imagenCarnea.getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH);
-		imagenPanDulce.setIcon(new ImageIcon(redimensionado));
-		imagenPanDulce.setVisible(false);
-		imagenPanDulce.setBounds(0, 0, 1280, 720);
+		// Inicialización de etiquetas de imagen
+		imagenPanDulce = crearImagenLabel("src/media/MENUPANDULCE.png");
+		imagenPanQueso = crearImagenLabel("src/media/MENUPANQUESO.png");
+		imagenPanIntegral = crearImagenLabel("src/media/MENUPANINTEGRALL.png");
+		imagenPanHojaldrado = crearImagenLabel("src/media/MENUPANHOJALDRADO.png");
 
-		imagenPanQueso = new JLabel();
-		ImageIcon imagenFVa = new ImageIcon("src/media/MENUPANQUESO.png");
-		Image redimensionado2 = imagenFVa.getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH);
-		imagenPanQueso.setIcon(new ImageIcon(redimensionado2));
-		imagenPanQueso.setVisible(false);
-		imagenPanQueso.setBounds(0, 0, 1280, 720);
-
-		
-		imagenPanIntegral = new JLabel();
-		ImageIcon imagenJuguetea = new ImageIcon("src/media/MENUPANINTEGRALL.png");
-		Image redimensionado3 = imagenJuguetea.getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH);
-		imagenPanIntegral.setIcon(new ImageIcon(redimensionado3));
-		imagenPanIntegral.setVisible(false);
-		imagenPanIntegral.setBounds(0, 0, 1280, 720);
-		
-		imagenPanHojaldrado = new JLabel();
-		ImageIcon imagenPana = new ImageIcon("src/media/MENUPANHOJALDRADO.png");
-		Image redimensionado4 = imagenPana.getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH);
-		imagenPanHojaldrado.setIcon(new ImageIcon(redimensionado4));
-		imagenPanHojaldrado.setVisible(false);
-		imagenPanHojaldrado.setBounds(0, 0, 1280, 720);
-
-
-
+		// Agregando componentes al panel
 		add(imagenPanDulce);
 		add(imagenPanQueso);
 		add(imagenPanIntegral);
@@ -94,76 +86,91 @@ public class PanelMenuGestion extends JPanel {
 		add(btnActualizar);
 		add(btnEliminar);
 		add(btnVolver);
-
 	}
 
 	/**
-	 * Obtiene la etiqueta de imagen para el tipo de producto "carne".
+	 * Crea y devuelve un JLabel con una imagen redimensionada.
+	 *
+	 * @param ruta La ruta de la imagen a cargar.
+	 * @return JLabel con la imagen redimensionada.
+	 */
+	private JLabel crearImagenLabel(String ruta) {
+		JLabel label = new JLabel();
+		ImageIcon imagen = new ImageIcon(ruta);
+		Image redimensionada = imagen.getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH);
+		label.setIcon(new ImageIcon(redimensionada));
+		label.setVisible(false);
+		label.setBounds(0, 0, 1280, 720);
+		return label;
+	}
+
+	/**
+	 * Obtiene la etiqueta de imagen para el tipo de producto "pan dulce".
 	 * 
-	 * @return La etiqueta de imagen para "carne".
+	 * @return La etiqueta de imagen para "pan dulce".
 	 */
 	public JLabel getImagenPanDulce() {
 		return imagenPanDulce;
 	}
 
 	/**
-	 * Establece la etiqueta de imagen para el tipo de producto "carne".
+	 * Establece la etiqueta de imagen para el tipo de producto "pan dulce".
 	 * 
-	 * @param imagenCarne La nueva etiqueta de imagen para "carne".
+	 * @param imagenPanDulce La nueva etiqueta de imagen para "pan dulce".
 	 */
 	public void setImagenPanDulce(JLabel imagenPanDulce) {
 		this.imagenPanDulce = imagenPanDulce;
 	}
 
 	/**
-	 * Obtiene la etiqueta de imagen para el tipo de producto "fruta y verdura".
+	 * Obtiene la etiqueta de imagen para el tipo de producto "pan de queso".
 	 * 
-	 * @return La etiqueta de imagen para "fruta y verdura".
+	 * @return La etiqueta de imagen para "pan de queso".
 	 */
 	public JLabel getImagenPanQueso() {
 		return imagenPanQueso;
 	}
 
 	/**
-	 * Establece la etiqueta de imagen para el tipo de producto "fruta y verdura".
+	 * Establece la etiqueta de imagen para el tipo de producto "pan de queso".
 	 * 
-	 * @param imagenFV La nueva etiqueta de imagen para "fruta y verdura".
+	 * @param imagenPanQueso La nueva etiqueta de imagen para "pan de queso".
 	 */
 	public void setImagenPanQueso(JLabel imagenPanQueso) {
 		this.imagenPanQueso = imagenPanQueso;
 	}
 
 	/**
-	 * Obtiene la etiqueta de imagen para el tipo de producto "juguete".
+	 * Obtiene la etiqueta de imagen para el tipo de producto "pan integral".
 	 * 
-	 * @return La etiqueta de imagen para "juguete".
+	 * @return La etiqueta de imagen para "pan integral".
 	 */
 	public JLabel getImagenPanIntegral() {
 		return imagenPanIntegral;
 	}
 
 	/**
-	 * Establece la etiqueta de imagen para el tipo de producto "juguete".
+	 * Establece la etiqueta de imagen para el tipo de producto "pan integral".
 	 * 
-	 * @param imagenJuguete La nueva etiqueta de imagen para "juguete".
+	 * @param imagenPanIntegral La nueva etiqueta de imagen para "pan integral".
 	 */
-	public void setImagenJuguete(JLabel imagenPanIntegral) {
+	public void setImagenPanIntegral(JLabel imagenPanIntegral) {
 		this.imagenPanIntegral = imagenPanIntegral;
 	}
 
 	/**
-	 * Obtiene la etiqueta de imagen para el tipo de producto "pan".
+	 * Obtiene la etiqueta de imagen para el tipo de producto "pan hojaldrado".
 	 * 
-	 * @return La etiqueta de imagen para "pan".
+	 * @return La etiqueta de imagen para "pan hojaldrado".
 	 */
 	public JLabel getImagenPanHojaldrado() {
 		return imagenPanHojaldrado;
 	}
 
 	/**
-	 * Establece la etiqueta de imagen para el tipo de producto "pan".
+	 * Establece la etiqueta de imagen para el tipo de producto "pan hojaldrado".
 	 * 
-	 * @param imagenPan La nueva etiqueta de imagen para "pan".
+	 * @param imagenPanHojaldrado La nueva etiqueta de imagen para "pan hojaldrado".
 	 */
 	public void setImagenPanHojaldrado(JLabel imagenPanHojaldrado) {
 		this.imagenPanHojaldrado = imagenPanHojaldrado;
@@ -258,5 +265,4 @@ public class PanelMenuGestion extends JPanel {
 	public void setBtnVolver(JButton btnVolver) {
 		this.btnVolver = btnVolver;
 	}
-
 }

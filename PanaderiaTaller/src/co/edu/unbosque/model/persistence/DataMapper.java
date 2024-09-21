@@ -4,146 +4,227 @@ import java.util.ArrayList;
 
 import co.edu.unbosque.model.*;
 
-public class DataMapper {// revisar la estructura de un objeto de una clase. convierte DTO a entidad y
-							// viceversa
+/**
+ * La clase DataMapper se encarga de convertir objetos de transferencia de datos (DTO)
+ * a entidades y viceversa. Proporciona métodos para realizar estas conversiones
+ * para diferentes tipos de panes.
+ * 
+ * @author Emmanuel
+ * @version 1.0
+ */
+public class DataMapper {
 
+    /**
+     * Convierte un objeto PanDulceDTO a un objeto PanDulce.
+     * 
+     * @param dto el objeto DTO a convertir
+     * @return el objeto PanDulce correspondiente
+     */
+    public static PanDulce PanDulceDTOToPanDulce(PanDulceDTO dto) {
+        PanDulce entity = new PanDulce(dto.getCantidad(), dto.getNombre(), dto.getPeso(), 
+                dto.getPrecio(), dto.isTieneGluten(), dto.isTieneLevadura(), 
+                dto.isTieneArequipe(), dto.getSaborDulce());
+        return entity;
+    }
 
-	public static PanDulce PanDulceDTOToPanDulce(PanDulceDTO dto) {
-		PanDulce entity;
-		entity = new PanDulce(dto.getCantidad(), dto.getNombre(), dto.getPeso(), dto.getPrecio(), dto.isTieneGluten(),
-				dto.isTieneLevadura(), dto.isTieneArequipe(), dto.getSaborDulce());
-		return entity;
-	}
+    /**
+     * Convierte un objeto PanDulce a un objeto PanDulceDTO.
+     * 
+     * @param entity el objeto entidad a convertir
+     * @return el objeto PanDulceDTO correspondiente
+     */
+    public static PanDulceDTO PanDulceToPanDulceDTO(PanDulce entity) {
+        PanDulceDTO dto = new PanDulceDTO(entity.getCantidad(), entity.getNombre(), 
+                entity.getPeso(), entity.getPrecio(), entity.isTieneGluten(), 
+                entity.isTieneLevadura(), entity.isTieneArequipe(), entity.getSaborDulce());
+        return dto;
+    }
 
-	public static PanDulceDTO PanDulceToPanDulceDTO(PanDulce entity) {
-		PanDulceDTO dto;
-		dto = new PanDulceDTO(entity.getCantidad(), entity.getNombre(), entity.getPeso(), entity.getPrecio(),
-				entity.isTieneGluten(), entity.isTieneLevadura(), entity.isTieneArequipe(), entity.getSaborDulce());
-		return dto;
-	}
+    /**
+     * Convierte una lista de objetos PanDulce a una lista de objetos PanDulceDTO.
+     * 
+     * @param listaEntity la lista de objetos entidad a convertir
+     * @return una lista de objetos PanDulceDTO correspondientes
+     */
+    public static ArrayList<PanDulceDTO> listaPanDulceToListaPanDulceDTO(ArrayList<PanDulce> listaEntity) {
+        ArrayList<PanDulceDTO> dtoList = new ArrayList<>();
+        for (PanDulce p : listaEntity) {
+            dtoList.add(PanDulceToPanDulceDTO(p));
+        }
+        return dtoList;
+    }
 
-	public static ArrayList<PanDulceDTO> listaPanDulceToListaPanDulceDTO(ArrayList<PanDulce> listaEntity) {
-		ArrayList<PanDulceDTO> dtoList = new ArrayList<>();
-		for (PanDulce p : listaEntity) {
-			dtoList.add(new PanDulceDTO(p.getCantidad(), p.getNombre(), p.getPeso(), p.getPrecio(), p.isTieneGluten(),
-					p.isTieneLevadura(), p.isTieneArequipe(), p.getSaborDulce()));
+    /**
+     * Convierte una lista de objetos PanDulceDTO a una lista de objetos PanDulce.
+     * 
+     * @param dtoList la lista de objetos DTO a convertir
+     * @return una lista de objetos PanDulce correspondientes
+     */
+    public static ArrayList<PanDulce> listaPanDulceDTOToListaPanDulce(ArrayList<PanDulceDTO> dtoList) {
+        ArrayList<PanDulce> entityList = new ArrayList<>();
+        for (PanDulceDTO pd : dtoList) {
+            entityList.add(PanDulceDTOToPanDulce(pd));
+        }
+        return entityList;
+    }
 
-		}
+    // Métodos similares para PanQueso, PanIntegral y PanHojaldrado...
 
-		return dtoList;
-	}
+    /**
+     * Convierte un objeto PanQuesoDTO a un objeto PanQueso.
+     * 
+     * @param dto el objeto DTO a convertir
+     * @return el objeto PanQueso correspondiente
+     */
+    public static PanQueso PanQuesoDTOToPanQueso(PanQuesoDTO dto) {
+        return new PanQueso(dto.getCantidad(), dto.getNombre(), dto.getPeso(), 
+                dto.getPrecio(), dto.isTieneGluten(), dto.isTieneLevadura(), 
+                dto.getTipoQueso(), dto.isEsGratinado());
+    }
 
-	public static ArrayList<PanDulce> listaPanDulceDTOToListaPanDulce(ArrayList<PanDulceDTO> dtoList) {
-		ArrayList<PanDulce> entityList = new ArrayList<>();
-		for (PanDulceDTO pd : dtoList) {
-			entityList.add(new PanDulce(pd.getCantidad(), pd.getNombre(), pd.getPeso(), pd.getPrecio(),
-					pd.isTieneGluten(), pd.isTieneLevadura(), pd.isTieneArequipe(), pd.getSaborDulce()));
-		}
-		return entityList;
-	}
+    /**
+     * Convierte un objeto PanQueso a un objeto PanQuesoDTO.
+     * 
+     * @param entity el objeto entidad a convertir
+     * @return el objeto PanQuesoDTO correspondiente
+     */
+    public static PanQuesoDTO PanQuesoToPanQuesoDTO(PanQueso entity) {
+        return new PanQuesoDTO(entity.getCantidad(), entity.getNombre(), entity.getPeso(), 
+                entity.getPrecio(), entity.isTieneGluten(), entity.isTieneLevadura(), 
+                entity.getTipoQueso(), entity.isEsGratinado());
+    }
 
-	public static PanQueso PanQuesoDTOToPanQueso(PanQuesoDTO dto) {
-		PanQueso entity;
-		entity = new PanQueso(dto.getCantidad(), dto.getNombre(), dto.getPeso(), dto.getPrecio(), dto.isTieneGluten(),
-				dto.isTieneLevadura(), dto.getTipoQueso(), dto.isEsGratinado());
-		return entity;
-	}
+    /**
+     * Convierte una lista de objetos PanQueso a una lista de objetos PanQuesoDTO.
+     * 
+     * @param listaEntity la lista de objetos entidad a convertir
+     * @return una lista de objetos PanQuesoDTO correspondientes
+     */
+    public static ArrayList<PanQuesoDTO> listaPanQuesoToListaPanQuesoDTO(ArrayList<PanQueso> listaEntity) {
+        ArrayList<PanQuesoDTO> dtoList = new ArrayList<>();
+        for (PanQueso p : listaEntity) {
+            dtoList.add(PanQuesoToPanQuesoDTO(p));
+        }
+        return dtoList;
+    }
 
-	public static PanQuesoDTO PanQuesoToPanQuesoDTO(PanQueso entity) {
-		PanQuesoDTO dto;
-		dto = new PanQuesoDTO(entity.getCantidad(), entity.getNombre(), entity.getPeso(), entity.getPrecio(),
-				entity.isTieneGluten(), entity.isTieneLevadura(), entity.getTipoQueso(), entity.isEsGratinado());
-		return dto;
-	}
+    /**
+     * Convierte una lista de objetos PanQuesoDTO a una lista de objetos PanQueso.
+     * 
+     * @param dtoList la lista de objetos DTO a convertir
+     * @return una lista de objetos PanQueso correspondientes
+     */
+    public static ArrayList<PanQueso> listaPanQuesoDTOToListaPanQueso(ArrayList<PanQuesoDTO> dtoList) {
+        ArrayList<PanQueso> entityList = new ArrayList<>();
+        for (PanQuesoDTO pd : dtoList) {
+            entityList.add(PanQuesoDTOToPanQueso(pd));
+        }
+        return entityList;
+    }
 
-	public static ArrayList<PanQuesoDTO> listaPanQuesoToListaPanQuesoDTO(ArrayList<PanQueso> listaEntity) {
-		ArrayList<PanQuesoDTO> dtoList = new ArrayList<>();
-		for (PanQueso p : listaEntity) {
-			dtoList.add(new PanQuesoDTO(p.getCantidad(), p.getNombre(), p.getPeso(), p.getPrecio(), p.isTieneGluten(),
-					p.isTieneLevadura(), p.getTipoQueso(), p.isEsGratinado()));
+    // Métodos similares para PanIntegral y PanHojaldrado...
 
-		}
+    /**
+     * Convierte un objeto PanIntegralDTO a un objeto PanIntegral.
+     * 
+     * @param dto el objeto DTO a convertir
+     * @return el objeto PanIntegral correspondiente
+     */
+    public static PanIntegral PanIntegralDTOToPanIntegral(PanIntegralDTO dto) {
+        return new PanIntegral(dto.getCantidad(), dto.getNombre(), dto.getPeso(), 
+                dto.getPrecio(), dto.isTieneGluten(), dto.isTieneLevadura(), 
+                dto.isTieneSieteGranos(), dto.isTieneFrutosSecos());
+    }
 
-		return dtoList;
-	}
+    /**
+     * Convierte un objeto PanIntegral a un objeto PanIntegralDTO.
+     * 
+     * @param entity el objeto entidad a convertir
+     * @return el objeto PanIntegralDTO correspondiente
+     */
+    public static PanIntegralDTO PanIntegralToPanIntegralDTO(PanIntegral entity) {
+        return new PanIntegralDTO(entity.getCantidad(), entity.getNombre(), entity.getPeso(), 
+                entity.getPrecio(), entity.isTieneGluten(), entity.isTieneLevadura(), 
+                entity.isTieneSieteGranos(), entity.isTieneFrutosSecos());
+    }
 
-	public static ArrayList<PanQueso> listaPanQuesoDTOToListaPanQueso(ArrayList<PanQuesoDTO> dtoList) {
-		ArrayList<PanQueso> entityList = new ArrayList<>();
-		for (PanQuesoDTO pd : dtoList) {
-			entityList.add(new PanQueso(pd.getCantidad(), pd.getNombre(), pd.getPeso(), pd.getPrecio(),
-					pd.isTieneGluten(), pd.isTieneLevadura(), pd.getTipoQueso(), pd.isEsGratinado()));
-		}
-		return entityList;
-	}
+    /**
+     * Convierte una lista de objetos PanIntegral a una lista de objetos PanIntegralDTO.
+     * 
+     * @param listaEntity la lista de objetos entidad a convertir
+     * @return una lista de objetos PanIntegralDTO correspondientes
+     */
+    public static ArrayList<PanIntegralDTO> listaPanIntegralToListaPanIntegralDTO(ArrayList<PanIntegral> listaEntity) {
+        ArrayList<PanIntegralDTO> dtoList = new ArrayList<>();
+        for (PanIntegral p : listaEntity) {
+            dtoList.add(PanIntegralToPanIntegralDTO(p));
+        }
+        return dtoList;
+    }
 
-	public static PanIntegral PanIntegralDTOToPanIntegral(PanIntegralDTO dto) {
-		PanIntegral entity;
-		entity = new PanIntegral(dto.getCantidad(), dto.getNombre(), dto.getPeso(), dto.getPrecio(),
-				dto.isTieneGluten(), dto.isTieneLevadura(), dto.isTieneSieteGranos(), dto.isTieneFrutosSecos());
-		return entity;
-	}
+    /**
+     * Convierte una lista de objetos PanIntegralDTO a una lista de objetos PanIntegral.
+     * 
+     * @param dtoList la lista de objetos DTO a convertir
+     * @return una lista de objetos PanIntegral correspondientes
+     */
+    public static ArrayList<PanIntegral> listaPanIntegralDTOToListaPanIntegral(ArrayList<PanIntegralDTO> dtoList) {
+        ArrayList<PanIntegral> entityList = new ArrayList<>();
+        for (PanIntegralDTO pd : dtoList) {
+            entityList.add(PanIntegralDTOToPanIntegral(pd));
+        }
+        return entityList;
+    }
 
-	public static PanIntegralDTO PanIntegralToPanIntegralDTO(PanIntegral entity) {
-		PanIntegralDTO dto;
-		dto = new PanIntegralDTO(entity.getCantidad(), entity.getNombre(), entity.getPeso(), entity.getPrecio(),
-				entity.isTieneGluten(), entity.isTieneLevadura(), entity.isTieneSieteGranos(),
-				entity.isTieneFrutosSecos());
-		return dto;
-	}
+    /**
+     * Convierte un objeto PanHojaldradoDTO a un objeto PanHojaldrado.
+     * 
+     * @param dto el objeto DTO a convertir
+     * @return el objeto PanHojaldrado correspondiente
+     */
+    public static PanHojaldrado PanHojaldradoDTOToPanHojaldrado(PanHojaldradoDTO dto) {
+        return new PanHojaldrado(dto.getCantidad(), dto.getNombre(), dto.getPeso(), 
+                dto.getPrecio(), dto.isTieneGluten(), dto.isTieneLevadura(), 
+                dto.isEsCroissant(), dto.isTieneCarne());
+    }
 
-	public static ArrayList<PanIntegralDTO> listaPanIntegralToListaPanIntegralDTO(ArrayList<PanIntegral> listaEntity) {
-		ArrayList<PanIntegralDTO> dtoList = new ArrayList<>();
-		for (PanIntegral p : listaEntity) {
-			dtoList.add(new PanIntegralDTO(p.getCantidad(), p.getNombre(), p.getPeso(), p.getPrecio(),
-					p.isTieneGluten(), p.isTieneLevadura(), p.isTieneSieteGranos(), p.isTieneFrutosSecos()));
+    /**
+     * Convierte un objeto PanHojaldrado a un objeto PanHojaldradoDTO.
+     * 
+     * @param entity el objeto entidad a convertir
+     * @return el objeto PanHojaldradoDTO correspondiente
+     */
+    public static PanHojaldradoDTO PanHojaldradoToPanHojaldradoDTO(PanHojaldrado entity) {
+        return new PanHojaldradoDTO(entity.getCantidad(), entity.getNombre(), entity.getPeso(), 
+                entity.getPrecio(), entity.isTieneGluten(), entity.isTieneLevadura(), 
+                entity.isEsCroissant(), entity.isTieneCarne());
+    }
 
-		}
+    /**
+     * Convierte una lista de objetos PanHojaldrado a una lista de objetos PanHojaldradoDTO.
+     * 
+     * @param listaEntity la lista de objetos entidad a convertir
+     * @return una lista de objetos PanHojaldradoDTO correspondientes
+     */
+    public static ArrayList<PanHojaldradoDTO> listaPanHojaldradoToListaPanHojaldradoDTO(ArrayList<PanHojaldrado> listaEntity) {
+        ArrayList<PanHojaldradoDTO> dtoList = new ArrayList<>();
+        for (PanHojaldrado p : listaEntity) {
+            dtoList.add(PanHojaldradoToPanHojaldradoDTO(p));
+        }
+        return dtoList;
+    }
 
-		return dtoList;
-	}
-
-	public static ArrayList<PanIntegral> listaPanIntegralDTOToListaPanIntegral(ArrayList<PanIntegralDTO> dtoList) {
-		ArrayList<PanIntegral> entityList = new ArrayList<>();
-		for (PanIntegralDTO pd : dtoList) {
-			entityList.add(new PanIntegral(pd.getCantidad(), pd.getNombre(), pd.getPeso(), pd.getPrecio(),
-					pd.isTieneGluten(), pd.isTieneLevadura(), pd.isTieneSieteGranos(), pd.isTieneFrutosSecos()));
-		}
-		return entityList;
-	}
-
-	public static PanHojaldrado PanHojaldradoDTOToPanHojaldrado(PanHojaldradoDTO dto) {
-		PanHojaldrado entity;
-		entity = new PanHojaldrado(dto.getCantidad(), dto.getNombre(), dto.getPeso(), dto.getPrecio(),
-				dto.isTieneGluten(), dto.isTieneLevadura(), dto.isEsCroissant(), dto.isTieneCarne());
-		return entity;
-	}
-
-	public static PanHojaldradoDTO PanHojaldradoToPanHojaldradoDTO(PanHojaldrado entity) {
-		PanHojaldradoDTO dto;
-		dto = new PanHojaldradoDTO(entity.getCantidad(), entity.getNombre(), entity.getPeso(), entity.getPrecio(),
-				entity.isTieneGluten(), entity.isTieneLevadura(), entity.isEsCroissant(), entity.isTieneCarne());
-		return dto;
-	}
-
-	public static ArrayList<PanHojaldradoDTO> listaPanHojaldradoToListaPanHojaldradoDTO(
-			ArrayList<PanHojaldrado> listaEntity) {
-		ArrayList<PanHojaldradoDTO> dtoList = new ArrayList<>();
-		for (PanHojaldrado p : listaEntity) {
-			dtoList.add(new PanHojaldradoDTO(p.getCantidad(), p.getNombre(), p.getPeso(), p.getPrecio(),
-					p.isTieneGluten(), p.isTieneLevadura(), p.isEsCroissant(), p.isTieneCarne()));
-
-		}
-
-		return dtoList;
-	}
-
-	public static ArrayList<PanHojaldrado> listaPanHojaldradoDTOToListaPanHojaldrado(
-			ArrayList<PanHojaldradoDTO> dtoList) {
-		ArrayList<PanHojaldrado> entityList = new ArrayList<>();
-		for (PanHojaldradoDTO pd : dtoList) {
-			entityList.add(new PanHojaldrado(pd.getCantidad(), pd.getNombre(), pd.getPeso(), pd.getPrecio(),
-					pd.isTieneGluten(), pd.isTieneLevadura(), pd.isEsCroissant(), pd.isTieneCarne()));
-		}
-		return entityList;
-	}
+    /**
+     * Convierte una lista de objetos PanHojaldradoDTO a una lista de objetos PanHojaldrado.
+     * 
+     * @param dtoList la lista de objetos DTO a convertir
+     * @return una lista de objetos PanHojaldrado correspondientes
+     */
+    public static ArrayList<PanHojaldrado> listaPanHojaldradoDTOToListaPanHojaldrado(ArrayList<PanHojaldradoDTO> dtoList) {
+        ArrayList<PanHojaldrado> entityList = new ArrayList<>();
+        for (PanHojaldradoDTO pd : dtoList) {
+            entityList.add(PanHojaldradoDTOToPanHojaldrado(pd));
+        }
+        return entityList;
+    }
 }
