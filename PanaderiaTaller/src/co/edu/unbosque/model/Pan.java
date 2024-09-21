@@ -160,9 +160,7 @@ public abstract class Pan {
 	 */
 	@Override
 	public String toString() {
-	    return "\n╔════════════════════════════════════════╗\n" +
-	           "║            📦 Producto                 ║\n" +
-	           "╚════════════════════════════════════════╝\n" +
+	    return 
 	           "🔹 Cantidad      : " + cantidad + "\n" +
 	           "🔹 Nombre        : " + nombre + "\n" +
 	           "🔹 Peso          : " + peso + " g\n" +

@@ -2,12 +2,14 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
+
 import co.edu.unbosque.model.PanDulce;
 import co.edu.unbosque.model.PanDulceDTO;
 
 public class PanDulceDAO implements CRUDOperation<PanDulceDTO, PanDulce> {
 	private ArrayList<PanDulce> listaPanDulces;
 	private final String FILE_NAME = "panDulce.csv";
+	private final String SERIAL_NAME= "panDulce.dat";
 
 	public PanDulceDAO() {
 		listaPanDulces = new ArrayList<>();
@@ -144,6 +146,20 @@ public class PanDulceDAO implements CRUDOperation<PanDulceDTO, PanDulce> {
 			content += "\n";
 		}
 		FileHandler.writeFile(FILE_NAME, content);
+	}
+	
+	public void writeSerialized() {
+		FileHandler.writeSerialized(SERIAL_NAME, listaPanDulces);
+	}
+	
+	
+	public void readSerialized() {
+		Object content= FileHandler.readSerialized(SERIAL_NAME);
+		if(content== null) {
+			listaPanDulces= new ArrayList<>();
+		}else {
+			listaPanDulces=(ArrayList<PanDulce>)content;
+		}
 	}
 
 }
