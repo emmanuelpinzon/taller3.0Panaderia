@@ -5,9 +5,7 @@ import java.util.ArrayList;
 
 import co.edu.unbosque.model.PanQueso;
 import co.edu.unbosque.model.PanQuesoDTO;
-import co.edu.unbosque.model.PanHojaldradoDTO;
-import co.edu.unbosque.model.PanIntegral;
-import co.edu.unbosque.model.PanIntegralDTO;
+
 
 public class PanQuesoDAO implements CRUDOperation <PanQuesoDTO,PanQueso>{
 	private ArrayList<PanQueso> listaPanQuesos;
@@ -21,7 +19,7 @@ FileHandler.checkFolder();
 	public String ShowAll() {
 		String rta = "";
 		if (listaPanQuesos.isEmpty()) {
-			return "no hay mascotas en la lista";
+			return "no hay panes queso en la lista";
 
 		} else {
 			for (PanQueso PanQueso : listaPanQuesos) {
@@ -29,6 +27,18 @@ FileHandler.checkFolder();
 			}
 			return rta;
 		}
+	}
+	@Override
+	public String ShowAllNames() {
+	    if (listaPanQuesos.isEmpty()) {
+	        return "No hay panes queso en la lista.";
+	    }
+
+	    String rta = "";
+	    for (PanQueso panQueso : listaPanQuesos) {
+	        rta += panQueso.getNombre() + "\n"; // Solo agrega el nombre
+	    }
+	    return rta;
 	}
 
 	@Override

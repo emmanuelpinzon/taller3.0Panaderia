@@ -114,8 +114,12 @@ public class PanQueso extends Pan {
 	 */
 	@Override
 	public String toString() {
-		return super.toString() + "\n tipoQueso: " + tipoQueso + " \n esGratinado: " + esGratinado + "\n";
+	    return "\n🧀 Pan Queso 🥖" + super.toString() +  // Llama al toString() de la clase padre
+	           "🔹 Tipo de Queso    : " + tipoQueso + "\n" +
+	           "🔹 ¿Es Gratinado?   : " + (esGratinado ? "Sí" : "No") + "\n" +
+	           "═════════════════════════════════════════\n";
 	}
+
 
 	/**
 	 * Implementa el método abstracto de la clase Pan para definir cómo se prepara

@@ -115,9 +115,12 @@ public class PanIntegral extends Pan {
 	 */
 	@Override
 	public String toString() {
-		return super.toString() + "\n tieneSieteGranos: " + tieneSieteGranos + "\n  tieneFrutosSecos: "
-				+ tieneFrutosSecos + "\n";
+	    return "\n🍞 Pan Integral 🌾" + super.toString() +  // Llama al toString() de la clase padre
+	           "🔹 ¿Tiene Siete Granos?  : " + (tieneSieteGranos ? "Sí" : "No") + "\n" +
+	           "🔹 ¿Tiene Frutos Secos?  : " + (tieneFrutosSecos ? "Sí" : "No") + "\n" +
+	           "═════════════════════════════════════════\n";
 	}
+
 
 	/**
 	 * Implementa el método abstracto de la clase Pan para definir cómo se prepara

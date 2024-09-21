@@ -293,43 +293,52 @@ public class Controller implements ActionListener {
 				vf.getPrincipal().mostrarPanelEntrada();
 			}
 			break;
+			
+			
+			
 		case "MOSTRAR":
 			// Verifica la sección seleccionada y muestra el listado correspondiente
 			if (panDulce) {
 				// Muestra la lista de "Carnes Frías" en la interfaz
-				vf.getCon().mostrarListado(mf.getPanDulceDAO().ShowAll());
+				vf.getCon().mostrarMensajeEmergenteConScroll( mf.getPanDulceDAO().ShowAll());
 			}
 			if (panQueso) {
 				// Muestra la lista de "Frutas y Verduras" en la interfaz
-				vf.getCon().mostrarListado(mf.getPanQuesoDAO().ShowAll());
+				vf.getCon().mostrarMensajeEmergenteConScroll(mf.getPanQuesoDAO().ShowAll());
 			}
 			if (panIntegral) {
 				// Muestra la lista de "Juguetes" en la interfaz
-				vf.getCon().mostrarListado(mf.getPanIntegralDAO().ShowAll());
+				vf.getCon().mostrarMensajeEmergenteConScroll(mf.getPanIntegralDAO().ShowAll());
 			}
 			if (panHojaldrado) {
 				// Muestra la lista de productos en "Panadería" en la interfaz
-				vf.getCon().mostrarListado(mf.getPanHojaldradoDAO().ShowAll());
+				vf.getCon().mostrarMensajeEmergenteConScroll(mf.getPanHojaldradoDAO().ShowAll());
 			}
 
 			break;
 		case "ACTUALIZAR":
+			try {
 			if (panDulce) {
 
 				vf.getPrincipal().setTitle("ACTUALIZANDO PAN DULCE");
 
 				// Muestra los nombres de los productos disponibles
-				String listaProductos = mf.getPanDulceDAO().ShowAll(); // Obtén la lista de productos
+				String listaProductos = mf.getPanDulceDAO().ShowAllNames(); // Obtén la lista de productos
 				vf.getCon().mostrarListado("Nombres disponibles:\n" + listaProductos); // Muestra la lista
 
 				// Solicita al usuario que ingrese el nombre del producto que desea actualizar
 				String nombreProducto = vf.getCon()
 						.leerEntradaEmergente("Ingrese el nombre del producto a actualizar: ");
+
+					ExceptionChecker.checkWord(nombreProducto);
+
 				// Crea un PanDulce temporal para buscar
 				PanDulce tempPanDulce = new PanDulce();
 				tempPanDulce.setNombre(nombreProducto);
 				// Busca el producto usando el método find
 				PanDulce panDulceEncontrado = mf.getPanDulceDAO().find(tempPanDulce);
+				
+				
 
 				// Verifica si se encontró el producto
 				if (panDulceEncontrado != null) { // Si el producto no es null, se encontró
@@ -363,12 +372,13 @@ public class Controller implements ActionListener {
 				vf.getPrincipal().setTitle("ACTUALIZANDO PAN QUESO");
 
 				// Muestra los nombres de los productos disponibles
-				String listaProductos = mf.getPanQuesoDAO().ShowAll(); // Obtén la lista de productos
+				String listaProductos = mf.getPanQuesoDAO().ShowAllNames(); // Obtén la lista de productos
 				vf.getCon().mostrarListado("Nombres disponibles:\n" + listaProductos); // Muestra la lista
 
 				// Solicita al usuario que ingrese el nombre del producto que desea actualizar
 				String nombreProducto = vf.getCon()
 						.leerEntradaEmergente("Ingrese el nombre del producto a actualizar: ");
+				ExceptionChecker.checkWord(nombreProducto);
 				// Crea un PanDulce temporal para buscar
 				PanQueso tempPanQueso = new PanQueso();
 				tempPanQueso.setNombre(nombreProducto);
@@ -405,12 +415,13 @@ public class Controller implements ActionListener {
 				vf.getPrincipal().setTitle("ACTUALIZANDO PAN INTEGRAL");
 
 				// Muestra los nombres de los productos disponibles
-				String listaProductos = mf.getPanIntegralDAO().ShowAll(); // Obtén la lista de productos
+				String listaProductos = mf.getPanIntegralDAO().ShowAllNames(); // Obtén la lista de productos
 				vf.getCon().mostrarListado("Nombres disponibles:\n" + listaProductos); // Muestra la lista
 
 				// Solicita al usuario que ingrese el nombre del producto que desea actualizar
 				String nombreProducto = vf.getCon()
 						.leerEntradaEmergente("Ingrese el nombre del producto a actualizar: ");
+				ExceptionChecker.checkWord(nombreProducto);
 				// Crea un PanDulce temporal para buscar
 				PanIntegral tempPanIntegral = new PanIntegral();
 				tempPanIntegral.setNombre(nombreProducto);
@@ -444,15 +455,16 @@ public class Controller implements ActionListener {
 				}
 			}
 			if (panHojaldrado) {
-				vf.getPrincipal().setTitle("ACTUALIZANDO PAN INTEGRAL");
+				vf.getPrincipal().setTitle("ACTUALIZANDO PAN HOJALDRADO");
 
 				// Muestra los nombres de los productos disponibles
-				String listaProductos = mf.getPanHojaldradoDAO().ShowAll(); // Obtén la lista de productos
+				String listaProductos = mf.getPanHojaldradoDAO().ShowAllNames(); // Obtén la lista de productos
 				vf.getCon().mostrarListado("Nombres disponibles:\n" + listaProductos); // Muestra la lista
 
 				// Solicita al usuario que ingrese el nombre del producto que desea actualizar
 				String nombreProducto = vf.getCon()
 						.leerEntradaEmergente("Ingrese el nombre del producto a actualizar: ");
+				ExceptionChecker.checkWord(nombreProducto);
 				// Crea un PanDulce temporal para buscar
 				PanHojaldrado tempPanHojaldrado = new PanHojaldrado();
 				tempPanHojaldrado.setNombre(nombreProducto);
@@ -486,62 +498,76 @@ public class Controller implements ActionListener {
 					vf.getCon().mostrarAlerta("Ingrese un nombre valido y que exista en la lista");
 				}
 			}
+			} catch (InvalidWordException e2) {
+				// TODO Auto-generated catch block
+				vf.getCon().mostrarAlerta(e2.getMessage());
+			}
 			break;
 		case "ELIMINAR":
-			try {
-			if (panDulce) {
-				String listaProductos = mf.getPanDulceDAO().ShowAll(); // Obtén la lista de productos
-				vf.getCon().mostrarListado("Nombres disponibles:\n" + listaProductos);
-				String nombre = vf.getCon().leerInputEliminar("Ingrese el nombre del producto a eliminar: ");
-				
-					ExceptionChecker.checkWord(nombre);
-				
-				PanDulceDTO dto = new PanDulceDTO(); // Asumiendo que tienes un constructor sin parámetros
-				dto.setNombre(nombre);
-				boolean resultado = mf.getPanDulceDAO().deleteByName(dto);
-				vf.getCon().mostrarAlerta(resultado ? "Producto eliminado correctamente" : "Producto no encontrado");
-			}
-			if (panQueso) {
-				String listaProductos = mf.getPanQuesoDAO().ShowAll(); // Obtén la lista de productos
-				vf.getCon().mostrarListado("Nombres disponibles:\n" + listaProductos);
-				String nombre = vf.getCon().leerInputEliminar("Ingrese el nombre del producto a eliminar: ");
-				ExceptionChecker.checkWord(nombre);
-				PanQuesoDTO dto = new PanQuesoDTO(); // Asumiendo que tienes un constructor sin parámetros
-				dto.setNombre(nombre);
-				boolean resultado = mf.getPanQuesoDAO().deleteByName(dto);
-				vf.getCon().mostrarAlerta(resultado ? "Producto eliminado correctamente" : "Producto no encontrado");
-			}
-			if (panIntegral) {
-				String listaProductos = mf.getPanIntegralDAO().ShowAll(); // Obtén la lista de productos
-				vf.getCon().mostrarListado("Nombres disponibles:\n" + listaProductos);
-				String nombre = vf.getCon().leerInputEliminar("Ingrese el nombre del producto a eliminar: ");
-				ExceptionChecker.checkWord(nombre);
-				PanIntegralDTO dto = new PanIntegralDTO(); // Asumiendo que tienes un constructor sin parámetros
-				dto.setNombre(nombre);
-				boolean resultado = mf.getPanIntegralDAO().deleteByName(dto);
-				vf.getCon().mostrarAlerta(resultado ? "Producto eliminado correctamente" : "Producto no encontrado");
-			}
-			if (panHojaldrado) {
-				String listaProductos = mf.getPanHojaldradoDAO().ShowAll(); // Obtén la lista de productos
-				vf.getCon().mostrarListado("Nombres disponibles:\n" + listaProductos);
-				String nombre = vf.getCon().leerInputEliminar("Ingrese el nombre del producto a eliminar: ");
-				ExceptionChecker.checkWord(nombre);
-				PanHojaldradoDTO dto = new PanHojaldradoDTO(); // Asumiendo que tienes un constructor sin parámetros
-				dto.setNombre(nombre);
-				boolean resultado = mf.getPanHojaldradoDAO().deleteByName(dto);
-				vf.getCon().mostrarAlerta(resultado ? "Producto eliminado correctamente" : "Producto no encontrado");
-			
-			}
-			} catch (InvalidWordException e1) {
-				// TODO Auto-generated catch block
-				//e1.printStackTrace();
-			}
-			break;
+
+		    try {
+		        if (panDulce) {
+		            String listaProductos = mf.getPanDulceDAO().ShowAllNames(); // Obtén la lista de productos
+		            vf.getCon().mostrarListado("Nombres disponibles:\n" + listaProductos);
+		            String nombre = vf.getCon().leerInputEliminar("Ingrese el nombre del producto a eliminar: ");
+		            
+		            // Validar el nombre del producto
+		            ExceptionChecker.checkWord(nombre);
+		            
+		            PanDulceDTO dto = new PanDulceDTO(); // Asumiendo que tienes un constructor sin parámetros
+		            dto.setNombre(nombre);
+		            boolean resultado = mf.getPanDulceDAO().deleteByName(dto);
+		            vf.getCon().mostrarAlerta(resultado ? "Producto eliminado correctamente" : "Producto no encontrado");
+		        }
+		        if (panQueso) {
+		            String listaProductos = mf.getPanQuesoDAO().ShowAllNames(); // Obtén la lista de productos
+		            vf.getCon().mostrarListado("Nombres disponibles:\n" + listaProductos);
+		            String nombre = vf.getCon().leerInputEliminar("Ingrese el nombre del producto a eliminar: ");
+		            
+		            // Validar el nombre del producto
+		            ExceptionChecker.checkWord(nombre);
+		            
+		            PanQuesoDTO dto = new PanQuesoDTO(); 
+		            dto.setNombre(nombre);
+		            boolean resultado = mf.getPanQuesoDAO().deleteByName(dto);
+		            vf.getCon().mostrarAlerta(resultado ? "Producto eliminado correctamente" : "Producto no encontrado");
+		        }
+		        if (panIntegral) {
+		            String listaProductos = mf.getPanIntegralDAO().ShowAllNames(); // Obtén la lista de productos
+		            vf.getCon().mostrarListado("Nombres disponibles:\n" + listaProductos);
+		            String nombre = vf.getCon().leerInputEliminar("Ingrese el nombre del producto a eliminar: ");
+		            
+		            // Validar el nombre del producto
+		            ExceptionChecker.checkWord(nombre);
+		            
+		            PanIntegralDTO dto = new PanIntegralDTO(); 
+		            dto.setNombre(nombre);
+		            boolean resultado = mf.getPanIntegralDAO().deleteByName(dto);
+		            vf.getCon().mostrarAlerta(resultado ? "Producto eliminado correctamente" : "Producto no encontrado");
+		        }
+		        if (panHojaldrado) {
+		            String listaProductos = mf.getPanHojaldradoDAO().ShowAllNames(); // Obtén la lista de productos
+		            vf.getCon().mostrarListado("Nombres disponibles:\n" + listaProductos);
+		            String nombre = vf.getCon().leerInputEliminar("Ingrese el nombre del producto a eliminar: ");
+		            
+		            // Validar el nombre del producto
+		            ExceptionChecker.checkWord(nombre);
+		            
+		            PanHojaldradoDTO dto = new PanHojaldradoDTO(); 
+		            dto.setNombre(nombre);
+		            boolean resultado = mf.getPanHojaldradoDAO().deleteByName(dto);
+		            vf.getCon().mostrarAlerta(resultado ? "Producto eliminado correctamente" : "Producto no encontrado");
+		        }
+		    } catch (InvalidWordException e1) {
+		        vf.getCon().mostrarAlerta(e1.getMessage()); // Mostrar el mensaje de la excepción
+		    }
 		case "VOLVER":
+
 			// Código para manejar la acción de volver al menú principal...
 			vf.getPrincipal().setTitle("MENU PRINCIPAL");
 			vf.getPrincipal().getPanelEntrada().getImagenProducto().setIcon(null);
 			vf.getPrincipal().mostrarPanelMenuPrincipal();
+			
 			break;
 
 		case "VOLVERDEADD":
@@ -764,9 +790,12 @@ public class Controller implements ActionListener {
 		    
 		    break;
 		case "UPDATE":
+			
 			if (panDulce == true && newPanDulce == true) {
 
 				int cantidadPan = Integer.parseInt(vf.getPrincipal().getPanelEntrada().getCantidadPan().getText());
+
+
 
 				String nombre = vf.getPrincipal().getPanelEntrada().getNombre().getText();
 				double peso = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPeso().getText());
@@ -912,14 +941,20 @@ public class Controller implements ActionListener {
 					vf.getCon().mostrarAlerta("No se encontró el producto anterior para actualizar.");
 				}
 			}
-
-			
-			
-			
-			
 			}
-
 		}
-	}
+	
+}
+
+
+			
+			
+			
+			
+			
+			
+
+		
+	
 
 

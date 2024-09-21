@@ -24,7 +24,7 @@ public class ExceptionChecker {
 	 * @param numero El número a verificar.
 	 * @throws NegativeNumberException Si el número es negativo.
 	 */
-	
+
 	public static int verificarNumeroNegativo(String entrada) throws NegativeNumberException {
         // Expresión regular que asegura que solo sea un número entero positivo
         if (!entrada.matches("^[0-9]")) {
@@ -33,8 +33,25 @@ public class ExceptionChecker {
         // Convierte a int y retorna el valor
         return Integer.parseInt(entrada);
     }
+
+	
+
+
+	/**
+	 * Verifica si un número es un entero válido. Si contiene algún carácter no
+	 * numérico, lanza una excepción.
+	 * 
+	 * @param numero1 El número a verificar.
+	 * @throws VerifyNonDecimalNumberException Si el número no es un entero.
+	 */
+
+
+
+	
+
 	
 	
+
 	/**
 	 * Verifica si una cadena es un estado booleano válido ("si" o "no").
 	 * 

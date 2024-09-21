@@ -2,8 +2,7 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
-import co.edu.unbosque.model.PanHojaldrado;
-import co.edu.unbosque.model.PanHojaldradoDTO;
+
 import co.edu.unbosque.model.PanIntegral;
 import co.edu.unbosque.model.PanIntegralDTO;
 
@@ -21,7 +20,7 @@ FileHandler.checkFolder();
 	public String ShowAll() {
 		String rta = "";
 		if (listaPanIntegrales.isEmpty()) {
-			return "no hay PanIntegrals en la lista";
+			return "no hay Panes Integrales en la lista";
 
 		} else {
 			for (PanIntegral PanIntegral : listaPanIntegrales) {
@@ -29,6 +28,19 @@ FileHandler.checkFolder();
 			}
 			return rta;
 		}
+	}
+	
+	@Override
+	public String ShowAllNames() {
+	    if (listaPanIntegrales.isEmpty()) {
+	        return "No hay panes integrales en la lista.";
+	    }
+
+	    String rta = "";
+	    for (PanIntegral panIntegral : listaPanIntegrales) {
+	        rta += panIntegral.getNombre() + "\n"; // Solo agrega el nombre
+	    }
+	    return rta;
 	}
 
 	@Override

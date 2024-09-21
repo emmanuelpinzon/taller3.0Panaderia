@@ -1,14 +1,10 @@
 package co.edu.unbosque.view;
 
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import javax.swing.*;
-import java.awt.*;
 
 /**
  * PanelMenuPrincipal es un panel de la interfaz gráfica que representa el menú
@@ -49,8 +45,7 @@ public class PanelMenuPrincipal extends JPanel {
 		btnPanQueso.setOpaque(false);
 		btnPanQueso.setActionCommand("PANQUESO");
 
-		btnPanIntegral = new JButton("panIntegral");//Disminuir Y = El botón sube.Aumentar Y = El botón baja.
-// disminuir x= izquierda. aumentar x= derecha
+		btnPanIntegral = new JButton("panIntegral");
 		btnPanIntegral.setBounds(350, 470, 300, 100);
 		btnPanIntegral.setOpaque(false);
 		btnPanIntegral.setActionCommand("PANINTEGRAL");
@@ -60,14 +55,11 @@ public class PanelMenuPrincipal extends JPanel {
 		btnPanHojaldrado.setOpaque(false);
 		btnPanHojaldrado.setActionCommand("PANHOJALDRADO");
 
-
 		add(imagenPpal);
 		add(btnPanDulce);
 		add(btnPanQueso);
 		add(btnPanIntegral);
 		add(btnPanHojaldrado);
-
-
 	}
 
 	/**
@@ -89,75 +81,74 @@ public class PanelMenuPrincipal extends JPanel {
 	}
 
 	/**
-	 * Obtiene el botón de "carnes" del panel.
+	 * Obtiene el botón de "Pan Dulce" del panel.
 	 * 
-	 * @return El botón de "carnes".
+	 * @return El botón de "Pan Dulce".
 	 */
 	public JButton getbtnPanDulce() {
 		return btnPanDulce;
 	}
 
 	/**
-	 * Establece el botón de "carnes" del panel.
+	 * Establece el botón de "Pan Dulce" del panel.
 	 * 
-	 * @param btnPanIntegralCoco El nuevo botón de "carnes".
+	 * @param btnPanDulce El nuevo botón de "Pan Dulce".
 	 */
-	public void setbtnPanIntegralCoco(JButton btnPanDulce) {
+	public void setbtnPanDulce(JButton btnPanDulce) {
 		this.btnPanDulce = btnPanDulce;
 	}
 
 	/**
-	 * Obtiene el botón de "fruta y verdura" del panel.
+	 * Obtiene el botón de "Pan Queso" del panel.
 	 * 
-	 * @return El botón de "fruta y verdura".
+	 * @return El botón de "Pan Queso".
 	 */
 	public JButton getbtnPanQueso() {
 		return btnPanQueso;
 	}
 
 	/**
-	 * Establece el botón de "fruta y verdura" del panel.
+	 * Establece el botón de "Pan Queso" del panel.
 	 * 
-	 * @param btnPanIntegralCosteño El nuevo botón de "fruta y verdura".
+	 * @param btnPanQueso El nuevo botón de "Pan Queso".
 	 */
 	public void setbtnPanQueso(JButton btnPanQueso) {
 		this.btnPanQueso = btnPanQueso;
 	}
 
 	/**
-	 * Obtiene el botón de "juguetes" del panel.
+	 * Obtiene el botón de "Pan Hojaldrado" del panel.
 	 * 
-	 * @return El botón de "juguetes".
+	 * @return El botón de "Pan Hojaldrado".
 	 */
 	public JButton getbtnPanHojaldrado() {
 		return btnPanHojaldrado;
 	}
 
 	/**
-	 * Establece el botón de "juguetes" del panel.
+	 * Establece el botón de "Pan Hojaldrado" del panel.
 	 * 
-	 * @param btnPanIntegralRoscon El nuevo botón de "juguetes".
+	 * @param btnPanHojaldrado El nuevo botón de "Pan Hojaldrado".
 	 */
-	public void setbtnPanIntegralRoscon(JButton btnPanHojaldrado) {
+	public void setbtnPanHojaldrado(JButton btnPanHojaldrado) {
 		this.btnPanHojaldrado = btnPanHojaldrado;
 	}
 
 	/**
-	 * Obtiene el botón de "pan" del panel.
+	 * Obtiene el botón de "Pan Integral" del panel.
 	 * 
-	 * @return El botón de "pan".
+	 * @return El botón de "Pan Integral".
 	 */
 	public JButton getbtnPanIntegral() {
 		return btnPanIntegral;
 	}
 
 	/**
-	 * Establece el botón de "pan" del panel.
+	 * Establece el botón de "Pan Integral" del panel.
 	 * 
-	 * @param btnPanIntegral El nuevo botón de "pan".
+	 * @param btnPanIntegral El nuevo botón de "Pan Integral".
 	 */
 	public void setbtnPanIntegral(JButton btnPanIntegral) {
 		this.btnPanIntegral = btnPanIntegral;
 	}
-
 }

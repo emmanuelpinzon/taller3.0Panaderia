@@ -115,8 +115,12 @@ public class PanHojaldrado extends Pan {
 	 */
 	@Override
 	public String toString() {
-		return super.toString() + "\n esCroissant: " + esCroissant + "\n  tieneCarne: " + tieneCarne + "\n";
+	    return "\n🥐 Pan Hojaldrado 🍞" + super.toString() +  // Llama al toString() de la clase padre
+	           "🔹 ¿Es Croissant?   : " + (esCroissant ? "Sí" : "No") + "\n" +
+	           "🔹 ¿Tiene Carne?    : " + (tieneCarne ? "Sí" : "No") + "\n" +
+	           "═════════════════════════════════════════\n";
 	}
+
 
 	/**
 	 * Implementa el método abstracto de la clase Pan para definir cómo se prepara

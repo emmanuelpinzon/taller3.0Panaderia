@@ -1,10 +1,15 @@
 package co.edu.unbosque.view;
 
 import java.awt.Image;
+
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 
 /**
  * PanelMenuGestion es un panel de la interfaz gráfica que representa el menú de
@@ -33,6 +38,8 @@ public class PanelMenuGestion extends JPanel {
 
 	private JLabel imagenPanDulce, imagenPanQueso, imagenPanIntegral, imagenPanHojaldrado;
 	private JButton btnAgregar, btnMostrar, btnActualizar, btnEliminar, btnVolver;
+    private JList<String> listaProductos; // JList para mostrar los productos
+    private DefaultListModel<String> modeloLista; // Modelo para el JList
 
 	/**
 	 * Constructor de PanelMenuGestion. Inicializa el panel con botones para las
@@ -75,6 +82,9 @@ public class PanelMenuGestion extends JPanel {
 		imagenPanQueso = crearImagenLabel("src/media/MENUPANQUESO.png");
 		imagenPanIntegral = crearImagenLabel("src/media/MENUPANINTEGRALL.png");
 		imagenPanHojaldrado = crearImagenLabel("src/media/MENUPANHOJALDRADO.png");
+		
+
+
 
 		// Agregando componentes al panel
 		add(imagenPanDulce);
@@ -86,6 +96,7 @@ public class PanelMenuGestion extends JPanel {
 		add(btnActualizar);
 		add(btnEliminar);
 		add(btnVolver);
+ 
 	}
 
 	/**
