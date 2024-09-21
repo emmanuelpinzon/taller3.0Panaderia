@@ -34,11 +34,11 @@ public class PanelEntrada extends JPanel {
 
 		// **Inicialización y configuración de campos de texto (JTextField)**
 		cantidadPan= new JTextField();
-		cantidadPan.setBounds(230, 182, 360, 45);
+		cantidadPan.setBounds(226, 182, 360, 45);
 		cantidadPan.setOpaque(true);
 		
 		nombre= new JTextField();
-		nombre.setBounds(800, 180, 320, 48);
+		nombre.setBounds(798, 180, 320, 48);
 		nombre.setOpaque(true);
 		
 		peso = new JTextField();
@@ -46,47 +46,47 @@ public class PanelEntrada extends JPanel {
 		peso.setOpaque(true);
 
 		precio = new JTextField();
-		precio.setBounds(790, 290, 300, 62);
+		precio.setBounds(790, 289, 330, 64);
 		precio.setOpaque(true);
 
 		tieneGluten = new JTextField();
-		tieneGluten.setBounds(270, 400, 330, 55);
+		tieneGluten.setBounds(231, 406, 343, 56);
 		tieneGluten.setOpaque(true);
 
 		tieneLevadura = new JTextField();
-		tieneLevadura.setBounds(230, 510, 330, 55);
+		tieneLevadura.setBounds(235, 513, 343, 65);
 		tieneLevadura.setOpaque(true);
 
 		saborDulce = new JTextField();
-		saborDulce.setBounds(810, 520, 245, 55);
+		saborDulce.setBounds(812, 516, 275, 65);
 		saborDulce.setOpaque(true);
 		
-		tieneArequipe = new JTextField("arequipe");
-		tieneArequipe.setBounds(806, 406, 272, 57);
+		tieneArequipe = new JTextField();
+		tieneArequipe.setBounds(813, 409, 273, 57);
 		tieneArequipe.setOpaque(true);
 
-		tipoQueso = new JTextField("queso");
+		tipoQueso = new JTextField();
 		tipoQueso.setBounds(810, 410, 280, 60);
 		tipoQueso.setOpaque(true);
 		
-		esGratinado = new JTextField("gratinado");
-		esGratinado.setBounds(810, 513, 275, 63);
+		esGratinado = new JTextField();
+		esGratinado.setBounds(811, 519, 275, 63);
 		esGratinado.setOpaque(true);
 		
-		tieneSieteGranos = new JTextField("granos");
-		tieneSieteGranos.setBounds(810, 414, 272, 57);
+		tieneSieteGranos = new JTextField();
+		tieneSieteGranos.setBounds(810, 414, 276, 57);
 		tieneSieteGranos.setOpaque(true);
 		
-		tieneFrutosSecos = new JTextField("frutos secos");
-		tieneFrutosSecos.setBounds(810, 414, 272, 57);
+		tieneFrutosSecos = new JTextField();
+		tieneFrutosSecos.setBounds(810, 525, 276, 57);
 		tieneFrutosSecos.setOpaque(true);
 		
-		esCroissant = new JTextField("croissant");
-		esCroissant.setBounds(810, 414, 272, 57);
+		esCroissant = new JTextField();
+		esCroissant.setBounds(810, 411, 272, 57);
 		esCroissant.setOpaque(true);
 		
-		tieneCarne = new JTextField("carne");
-		tieneCarne.setBounds(810, 414, 272, 57);
+		tieneCarne = new JTextField();
+		tieneCarne.setBounds(810, 516, 276, 63);
 		tieneCarne.setOpaque(true);
 		
 		
@@ -107,14 +107,11 @@ public class PanelEntrada extends JPanel {
 		btnAgregar.setBackground(new Color(255, 217, 47));
 		btnAgregar.setBorder(border);
 
-
-
 		btnActualizar = new JButton("Actualizar");
-		btnActualizar.setOpaque(true);
-		btnActualizar.setBounds(550, 400, 140, 55);
+		btnActualizar.setOpaque(false);
+		btnActualizar.setBounds(810, 620, 140, 50);
 		btnActualizar.setActionCommand("UPDATE");
-		btnActualizar.setBackground(Color.DARK_GRAY);
-		btnActualizar.setForeground(Color.WHITE);
+		btnActualizar.setBackground(new Color(255, 217, 47));
 		btnActualizar.setBorder(border);
 
 		// **Inicialización y configuración de etiquetas de imagen (JLabel)**
@@ -176,7 +173,27 @@ public class PanelEntrada extends JPanel {
 		add(imagenAgregarJ);
 		add(imagenAgregarP);
 
-
+		setComponentZOrder(imagenProducto, 0); // Imagen de fondo
+        setComponentZOrder(imagenAgregarC, 1);
+        setComponentZOrder(imagenAgregarV, 2);
+        setComponentZOrder(imagenAgregarJ, 3);
+        setComponentZOrder(imagenAgregarP, 4);
+        setComponentZOrder(nombre, 5);
+        setComponentZOrder(peso, 6);
+        setComponentZOrder(precio, 7);
+        setComponentZOrder(tieneGluten, 8);
+        setComponentZOrder(tieneLevadura, 9);
+        setComponentZOrder(saborDulce, 10);
+        setComponentZOrder(tieneArequipe, 11);
+        setComponentZOrder(tipoQueso, 12);
+        setComponentZOrder(esGratinado, 13);
+        setComponentZOrder(tieneSieteGranos, 14);
+        setComponentZOrder(tieneFrutosSecos, 15);
+        setComponentZOrder(esCroissant, 16);
+        setComponentZOrder(tieneCarne, 17);
+        setComponentZOrder(btnVolver, 17);
+        setComponentZOrder(btnAgregar, 18);
+        setComponentZOrder(btnActualizar, 19);
 		
 		
 	}
