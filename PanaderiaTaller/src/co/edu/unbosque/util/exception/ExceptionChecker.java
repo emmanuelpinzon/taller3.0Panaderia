@@ -25,10 +25,16 @@ public class ExceptionChecker {
 	 * @throws NegativeNumberException Si el número es negativo.
 	 */
 	public static void verificarNumeroNegativo(int numero) throws NegativeNumberException {
-		if (numero < 0) {
+		
+		String numeroComoString = String.valueOf(numero);
+		Pattern p = Pattern.compile("[1-9]+$");
+		Matcher m = p.matcher(numeroComoString);
+
+		if (m.find()) {
 			throw new NegativeNumberException();
 		}
 	}
+
 
 	/**
 	 * Verifica si un número es un entero válido. Si contiene algún carácter no
@@ -37,13 +43,7 @@ public class ExceptionChecker {
 	 * @param numero1 El número a verificar.
 	 * @throws VerifyNonDecimalNumberException Si el número no es un entero.
 	 */
-	public static void verificarNumeroEntero(int numero1) throws VerifyNonDecimalNumberException {
-		Pattern p = Pattern.compile("[\\D]");
-		Matcher m = p.matcher(String.valueOf(numero1));
-		if (m.find()) {
-			throw new VerifyNonDecimalNumberException();
-		}
-	}
+
 
 	/**
 	 * Verifica si una cadena es un estado booleano válido ("si" o "no").

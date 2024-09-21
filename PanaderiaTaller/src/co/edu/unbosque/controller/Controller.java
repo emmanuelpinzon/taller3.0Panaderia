@@ -733,12 +733,12 @@ public class Controller implements ActionListener {
 			}
 			break;
 		case "UPDATE":
-			try {
+			
 			if (panDulce == true && newPanDulce == true) {
 
 				int cantidadPan = Integer.parseInt(vf.getPrincipal().getPanelEntrada().getCantidadPan().getText());
 
-	ExceptionChecker.verificarNumeroEntero(cantidadPan);
+
 
 				String nombre = vf.getPrincipal().getPanelEntrada().getNombre().getText();
 				double peso = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPeso().getText());
@@ -884,18 +884,20 @@ public class Controller implements ActionListener {
 					vf.getCon().mostrarAlerta("No se encontró el producto anterior para actualizar.");
 				}
 			}
-			} catch (VerifyNonDecimalNumberException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
 			}
+		}
+	
+}
+
+
 			
 			
 			
 			
-			}
+			
 			
 
-		}
-	}
+		
+	
 
 

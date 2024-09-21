@@ -160,8 +160,8 @@ public abstract class Pan {
 	 */
 	@Override
 	public String toString() {
-		return "\n cantidad: " + cantidad + "\n nombre: " + nombre + " \n peso: " + peso + ", \n precio: " + precio
-				+ "\n  tieneGluten: " + tieneGluten + "\n tieneLevadura: " + tieneLevadura + "\n";
+		return "\n cantidad: " + cantidad + "\n nombre: " + nombre + " \n peso: " + peso + " g"+ " \n precio: " + precio
+				+ "\n  tieneGluten: " + tieneGluten + "\n tieneLevadura: " + tieneLevadura ;
 	}
 
 	/**

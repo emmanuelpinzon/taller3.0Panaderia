@@ -228,6 +228,8 @@ public class PanelEntrada extends JPanel {
 		setComponentZOrder(btnAgregar, 19);
 		setComponentZOrder(btnActualizar, 20);
 	
+	    revalidate();
+	    repaint();
 	}
 
 	/**
