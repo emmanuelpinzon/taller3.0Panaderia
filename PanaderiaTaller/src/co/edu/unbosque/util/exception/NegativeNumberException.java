@@ -23,6 +23,6 @@ public class NegativeNumberException extends Exception {
 	 * predeterminado.
 	 */
 	public NegativeNumberException() {
-		super("Los números no pueden ser negativos.");
+		super("Solo se aceptan numeros enteros positivos diferentes a 0");
 	}
 }

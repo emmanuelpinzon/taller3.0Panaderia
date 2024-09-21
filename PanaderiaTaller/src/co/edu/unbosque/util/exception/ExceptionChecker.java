@@ -24,27 +24,17 @@ public class ExceptionChecker {
 	 * @param numero El número a verificar.
 	 * @throws NegativeNumberException Si el número es negativo.
 	 */
-	public static void verificarNumeroNegativo(int numero) throws NegativeNumberException {
-		if (numero < 0) {
-			throw new NegativeNumberException();
-		}
-	}
-
-	/**
-	 * Verifica si un número es un entero válido. Si contiene algún carácter no
-	 * numérico, lanza una excepción.
-	 * 
-	 * @param numero1 El número a verificar.
-	 * @throws VerifyNonDecimalNumberException Si el número no es un entero.
-	 */
-	public static void verificarNumeroEntero(int numero1) throws VerifyNonDecimalNumberException {
-		Pattern p = Pattern.compile("[\\D]");
-		Matcher m = p.matcher(String.valueOf(numero1));
-		if (m.find()) {
-			throw new VerifyNonDecimalNumberException();
-		}
-	}
-
+	
+	public static int verificarNumeroNegativo(String entrada) throws NegativeNumberException {
+        // Expresión regular que asegura que solo sea un número entero positivo
+        if (!entrada.matches("^[1-9]+$")) {
+            throw new NegativeNumberException();
+        }
+        // Convierte a int y retorna el valor
+        return Integer.parseInt(entrada);
+    }
+	
+	
 	/**
 	 * Verifica si una cadena es un estado booleano válido ("si" o "no").
 	 * 
@@ -90,4 +80,8 @@ public class ExceptionChecker {
 			throw new InvalidDoubleFormatException();
 		}
 	}
-}
+	
+    }
+
+
+

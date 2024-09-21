@@ -19,13 +19,8 @@ public class ExceptionMain {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		int e= 33;
-		try {
-			ExceptionChecker.verificarNumeroEntero(e);
-		} catch (VerifyNonDecimalNumberException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
+		
 		double f= -4.9;
 		try {
 			ExceptionChecker.checkDouble(f);

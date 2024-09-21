@@ -27,9 +27,10 @@ public class Consola {
 	 * 
 	 * @return el valor entero leído
 	 */
-	public int readInt() {
-		return sc.nextInt();
-	}
+	public int readInt(String entrada) {
+        int numero = Integer.parseInt(entrada);
+        return numero;
+    }
 
 	/**
 	 * Lee un valor decimal (float) desde la entrada estándar.
