@@ -2,8 +2,7 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
-import co.edu.unbosque.model.PanDulce;
-import co.edu.unbosque.model.PanDulceDTO;
+
 import co.edu.unbosque.model.PanHojaldrado;
 import co.edu.unbosque.model.PanHojaldradoDTO;
 
@@ -21,7 +20,7 @@ public class PanHojaldradoDAO implements CRUDOperation<PanHojaldradoDTO, PanHoja
 	public String ShowAll() {
 		String rta = "";
 		if (listaPanHojaldrado.isEmpty()) {
-			return "no hay mascotas en la lista";
+			return "no hay panes hojaldrados en la lista";
 
 		} else {
 			for (PanHojaldrado PanHojaldrado : listaPanHojaldrado) {
@@ -29,6 +28,18 @@ public class PanHojaldradoDAO implements CRUDOperation<PanHojaldradoDTO, PanHoja
 			}
 			return rta;
 		}
+	}
+	@Override
+	public String ShowAllNames() {
+	    if (listaPanHojaldrado.isEmpty()) {
+	        return "No hay panes dulces en la lista.";
+	    }
+
+	    String rta = "";
+	    for (PanHojaldrado panHojaldrado : listaPanHojaldrado) {
+	        rta += panHojaldrado.getNombre() + "\n"; // Solo agrega el nombre
+	    }
+	    return rta;
 	}
 
 	@Override

@@ -25,16 +25,16 @@ public class ExceptionChecker {
 	 * @throws NegativeNumberException Si el número es negativo.
 	 */
 
-	public static void verificarNumeroNegativo(int numero) throws NegativeNumberException {
-		
-		String numeroComoString = String.valueOf(numero);
-		Pattern p = Pattern.compile("[1-9]+$");
-		Matcher m = p.matcher(numeroComoString);
+	public static int verificarNumeroNegativo(String entrada) throws NegativeNumberException {
+        // Expresión regular que asegura que solo sea un número entero positivo
+        if (!entrada.matches("^[1-9]+$")) {
+            throw new NegativeNumberException();
+        }
+        // Convierte a int y retorna el valor
+        return Integer.parseInt(entrada);
+    }
 
-		if (m.find()) {
-			throw new NegativeNumberException();
-		}
-	}
+	
 
 
 	/**

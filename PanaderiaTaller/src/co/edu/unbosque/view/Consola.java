@@ -2,6 +2,8 @@ package co.edu.unbosque.view;
 
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 /**
  * La clase Consola proporciona métodos para interactuar con el usuario a través
@@ -175,5 +177,20 @@ public class Consola {
 	 */
 	public String leerEntradaEmergente(String texto) {
 		return JOptionPane.showInputDialog(null, texto, "Ingresando dato", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void mostrarMensajeEmergenteConScroll(String texto) {
+		JTextArea textArea= new JTextArea(30,50);
+		textArea.setText(texto);
+		textArea.setWrapStyleWord(true);
+		textArea.setLineWrap(true);
+		textArea.setCaretPosition(0);
+		textArea.setEditable(false);
+		
+		JScrollPane scrollPane= new JScrollPane(textArea);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		
+		JOptionPane.showInternalMessageDialog(null, scrollPane, "Listado de productos", JOptionPane.INFORMATION_MESSAGE);
 	}
 }

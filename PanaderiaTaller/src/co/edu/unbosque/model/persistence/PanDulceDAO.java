@@ -27,6 +27,18 @@ public class PanDulceDAO implements CRUDOperation<PanDulceDTO, PanDulce> {
 			return rta;
 		}
 	}
+	@Override
+	public String ShowAllNames() {
+	    if (listaPanDulces.isEmpty()) {
+	        return "No hay panes dulces en la lista.";
+	    }
+
+	    String rta = "";
+	    for (PanDulce panDulce : listaPanDulces) {
+	        rta += panDulce.getNombre() + "\n"; // Solo agrega el nombre
+	    }
+	    return rta;
+	}
 
 	@Override
 	public ArrayList<PanDulceDTO> getAll() {

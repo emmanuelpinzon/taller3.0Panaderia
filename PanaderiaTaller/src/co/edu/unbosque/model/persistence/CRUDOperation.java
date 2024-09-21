@@ -21,6 +21,13 @@ public interface CRUDOperation<P, N> {
      * @return una cadena que representa todos los registros
      */
     public String ShowAll(); // mostrar todo
+    
+    /**
+     * Muestra solo los nombres de los registros en formato de texto.
+     * 
+     * @return una cadena que representa los nombres de los registros
+     */
+    public String ShowAllNames(); // mostrar solo nombres
 
     /**
      * Obtiene todos los registros como una lista de objetos DTO.

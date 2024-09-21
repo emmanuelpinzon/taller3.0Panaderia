@@ -160,9 +160,19 @@ public abstract class Pan {
 	 */
 	@Override
 	public String toString() {
-		return "\n cantidad: " + cantidad + "\n nombre: " + nombre + " \n peso: " + peso + " g"+ " \n precio: " + precio
-				+ "\n  tieneGluten: " + tieneGluten + "\n tieneLevadura: " + tieneLevadura ;
+	    return "\n╔════════════════════════════════════════╗\n" +
+	           "║            📦 Producto                 ║\n" +
+	           "╚════════════════════════════════════════╝\n" +
+	           "🔹 Cantidad      : " + cantidad + "\n" +
+	           "🔹 Nombre        : " + nombre + "\n" +
+	           "🔹 Peso          : " + peso + " g\n" +
+	           "🔹 Precio        : $" + precio + "\n" +
+	           "🔹 Tiene Gluten  : " + (tieneGluten ? "Sí" : "No") + "\n" +
+	           "🔹 Tiene Levadura: " + (tieneLevadura ? "Sí" : "No") + "\n";
+
 	}
+
+
 
 	/**
 	 * Método abstracto que debe ser implementado por las clases hijas para definir
