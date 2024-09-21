@@ -18,6 +18,7 @@ import co.edu.unbosque.model.PanIntegral;
 import co.edu.unbosque.view.ViewFacade;
 import co.edu.unbosque.util.exception.*;
 
+
 public class Controller implements ActionListener {
 	private ViewFacade vf;
 	private ModelFacade mf;
@@ -500,6 +501,7 @@ public class Controller implements ActionListener {
 			}
 			break;
 		case "ELIMINAR":
+<<<<<<< HEAD
 		    try {
 		        if (panDulce) {
 		            String listaProductos = mf.getPanDulceDAO().ShowAll(); // Obtén la lista de productos
@@ -558,6 +560,57 @@ public class Controller implements ActionListener {
 		    }
 		    break;
 
+=======
+			try {
+			if (panDulce) {
+				String listaProductos = mf.getPanDulceDAO().ShowAll(); // Obtén la lista de productos
+				vf.getCon().mostrarListado("Nombres disponibles:\n" + listaProductos);
+				String nombre = vf.getCon().leerInputEliminar("Ingrese el nombre del producto a eliminar: ");
+				
+					ExceptionChecker.checkWord(nombre);
+				
+				PanDulceDTO dto = new PanDulceDTO(); // Asumiendo que tienes un constructor sin parámetros
+				dto.setNombre(nombre);
+				boolean resultado = mf.getPanDulceDAO().deleteByName(dto);
+				vf.getCon().mostrarAlerta(resultado ? "Producto eliminado correctamente" : "Producto no encontrado");
+			}
+			if (panQueso) {
+				String listaProductos = mf.getPanQuesoDAO().ShowAll(); // Obtén la lista de productos
+				vf.getCon().mostrarListado("Nombres disponibles:\n" + listaProductos);
+				String nombre = vf.getCon().leerInputEliminar("Ingrese el nombre del producto a eliminar: ");
+				ExceptionChecker.checkWord(nombre);
+				PanQuesoDTO dto = new PanQuesoDTO(); // Asumiendo que tienes un constructor sin parámetros
+				dto.setNombre(nombre);
+				boolean resultado = mf.getPanQuesoDAO().deleteByName(dto);
+				vf.getCon().mostrarAlerta(resultado ? "Producto eliminado correctamente" : "Producto no encontrado");
+			}
+			if (panIntegral) {
+				String listaProductos = mf.getPanIntegralDAO().ShowAll(); // Obtén la lista de productos
+				vf.getCon().mostrarListado("Nombres disponibles:\n" + listaProductos);
+				String nombre = vf.getCon().leerInputEliminar("Ingrese el nombre del producto a eliminar: ");
+				ExceptionChecker.checkWord(nombre);
+				PanIntegralDTO dto = new PanIntegralDTO(); // Asumiendo que tienes un constructor sin parámetros
+				dto.setNombre(nombre);
+				boolean resultado = mf.getPanIntegralDAO().deleteByName(dto);
+				vf.getCon().mostrarAlerta(resultado ? "Producto eliminado correctamente" : "Producto no encontrado");
+			}
+			if (panHojaldrado) {
+				String listaProductos = mf.getPanHojaldradoDAO().ShowAll(); // Obtén la lista de productos
+				vf.getCon().mostrarListado("Nombres disponibles:\n" + listaProductos);
+				String nombre = vf.getCon().leerInputEliminar("Ingrese el nombre del producto a eliminar: ");
+				ExceptionChecker.checkWord(nombre);
+				PanHojaldradoDTO dto = new PanHojaldradoDTO(); // Asumiendo que tienes un constructor sin parámetros
+				dto.setNombre(nombre);
+				boolean resultado = mf.getPanHojaldradoDAO().deleteByName(dto);
+				vf.getCon().mostrarAlerta(resultado ? "Producto eliminado correctamente" : "Producto no encontrado");
+			
+			}
+			} catch (InvalidWordException e1) {
+				// TODO Auto-generated catch block
+				//e1.printStackTrace();
+			}
+			break;
+>>>>>>> branch 'master' of https://github.com/emmanuelpinzon/taller3.0Panaderia.git
 		case "VOLVER":
 			// Código para manejar la acción de volver al menú principal...
 			vf.getPrincipal().setTitle("MENU PRINCIPAL");
@@ -634,104 +687,139 @@ public class Controller implements ActionListener {
 			vf.getPrincipal().getPanelEntrada().getTieneCarne().setText("");
 			break;
 		case "AGREGARPRODUCTO":
-			if (panDulce == true) {
+		    try {
+		        if (panDulce) {
+		            // Obtener los valores ingresados
+		        	
+		            String cantidad = vf.getPrincipal().getPanelEntrada().getCantidadPan().getText();
+		            int cantidadPan = vf.getCon().readInt(cantidad);
+		            ExceptionChecker.verificarNumeroNegativo(cantidad);
+		            String nombre = vf.getPrincipal().getPanelEntrada().getNombre().getText();
+		            ExceptionChecker.checkWord(nombre);
+		            double peso = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPeso().getText());
+		            ExceptionChecker.checkDouble(peso);
+		            double precio = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPrecio().getText());
+		            ExceptionChecker.checkDouble(precio);
+		            String gluten = vf.getPrincipal().getPanelEntrada().getTieneGluten().getText();
+		            boolean tieneGluten = vf.getCon().readBoolean(gluten);
+		            ExceptionChecker.checkCondition(gluten);
+		            String levadura = vf.getPrincipal().getPanelEntrada().getTieneLevadura().getText();
+		            ExceptionChecker.checkWord(levadura);
+		            boolean tieneLevadura = vf.getCon().readBoolean(levadura);
+		            ExceptionChecker.checkCondition(levadura);
+		            String arequipe = vf.getPrincipal().getPanelEntrada().getTieneArequipe().getText();
+		            boolean tieneArequipe = vf.getCon().readBoolean(arequipe);
+		            ExceptionChecker.checkCondition(arequipe);
+		            String saborDulce = vf.getPrincipal().getPanelEntrada().getSaborDulce().getText();
+		            ExceptionChecker.checkWord(saborDulce);
 
-				int cantidadPan = Integer.parseInt(vf.getPrincipal().getPanelEntrada().getCantidadPan().getText());
 
-				String nombre = vf.getPrincipal().getPanelEntrada().getNombre().getText();
-				double peso = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPeso().getText());
-				double precio = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPrecio().getText());
+		            // Crear y agregar el producto
+		            mf.getPanDulceDAO().add(new PanDulceDTO(cantidadPan, nombre, peso, precio, tieneGluten, tieneLevadura, tieneArequipe, saborDulce));
+		            vf.getCon().mostrarMensajeEmergente("Producto Pan Dulce creado exitosamente");
+		        }
 
-				String gluten = (vf.getPrincipal().getPanelEntrada().getTieneGluten().getText());
-				boolean tieneGluten = vf.getCon().readBoolean(gluten);
+		        if (panQueso) {
+		        	String cantidad = vf.getPrincipal().getPanelEntrada().getCantidadPan().getText();
+		            int cantidadPan = vf.getCon().readInt(cantidad);
+		            ExceptionChecker.verificarNumeroNegativo(cantidad);
+		            String nombre = vf.getPrincipal().getPanelEntrada().getNombre().getText();
+		            ExceptionChecker.checkWord(nombre);
+		            double peso = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPeso().getText());
+		            ExceptionChecker.checkDouble(peso);
+		            double precio = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPrecio().getText());
+		            ExceptionChecker.checkDouble(precio);
+		            String gluten = vf.getPrincipal().getPanelEntrada().getTieneGluten().getText();
+		            boolean tieneGluten = vf.getCon().readBoolean(gluten);
+		            ExceptionChecker.checkCondition(gluten);
+		            String levadura = vf.getPrincipal().getPanelEntrada().getTieneLevadura().getText();
+		            ExceptionChecker.checkWord(levadura);
+		            boolean tieneLevadura = vf.getCon().readBoolean(levadura);
+		            ExceptionChecker.checkCondition(levadura);
+		            String tipoQueso = vf.getPrincipal().getPanelEntrada().getTipoQueso().getText();
+		            ExceptionChecker.checkWord(tipoQueso);
+		            String gratinado = vf.getPrincipal().getPanelEntrada().getEsGratinado().getText();
+		            boolean esGratinado = vf.getCon().readBoolean(gratinado);
+		            ExceptionChecker.checkCondition(gratinado);
 
-				String levadura = (vf.getPrincipal().getPanelEntrada().getTieneLevadura().getText());
-				boolean tieneLevadura = vf.getCon().readBoolean(levadura);
+		        
 
-				String arequipe = (vf.getPrincipal().getPanelEntrada().getTieneArequipe().getText());
-				boolean tieneArequipe = vf.getCon().readBoolean(arequipe);
+		            // Crear y agregar el producto
+		            mf.getPanQuesoDAO().add(new PanQuesoDTO(cantidadPan, nombre, peso, precio, tieneGluten, tieneLevadura, tipoQueso, esGratinado));
+		            vf.getCon().mostrarMensajeEmergente("Producto Pan Queso creado exitosamente");
+		        }
 
-				String saborDulce = vf.getPrincipal().getPanelEntrada().getSaborDulce().getText();
+		        if (panIntegral) {
+		        	String cantidad = vf.getPrincipal().getPanelEntrada().getCantidadPan().getText();
+		            int cantidadPan = vf.getCon().readInt(cantidad);
+		            ExceptionChecker.verificarNumeroNegativo(cantidad);
+		            String nombre = vf.getPrincipal().getPanelEntrada().getNombre().getText();
+		            ExceptionChecker.checkWord(nombre);
+		            double peso = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPeso().getText());
+		            ExceptionChecker.checkDouble(peso);
+		            double precio = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPrecio().getText());
+		            ExceptionChecker.checkDouble(precio);
+		            String gluten = vf.getPrincipal().getPanelEntrada().getTieneGluten().getText();
+		            boolean tieneGluten = vf.getCon().readBoolean(gluten);
+		            ExceptionChecker.checkCondition(gluten);
+		            String levadura = vf.getPrincipal().getPanelEntrada().getTieneLevadura().getText();
+		            ExceptionChecker.checkWord(levadura);
+		            boolean tieneLevadura = vf.getCon().readBoolean(levadura);
+		            ExceptionChecker.checkCondition(levadura);
+		            String sieteGranos = vf.getPrincipal().getPanelEntrada().getTieneSieteGranos().getText();
+		            ExceptionChecker.checkWord(sieteGranos);
+		            boolean tieneSieteGranos = vf.getCon().readBoolean(sieteGranos);
+		            ExceptionChecker.checkCondition(sieteGranos);
+		            String frutosSecos = vf.getPrincipal().getPanelEntrada().getTieneFrutosSecos().getText();
+		            boolean tieneFrutosSecos = vf.getCon().readBoolean(frutosSecos);
+		            ExceptionChecker.checkCondition(frutosSecos);
+		            
 
-				mf.getPanDulceDAO().add(new PanDulceDTO(cantidadPan, nombre, peso, precio, tieneGluten, tieneLevadura,
-						tieneArequipe, saborDulce));
-				vf.getCon().mostrarMensajeEmergente("Producto creado exitosamente");
+		            // Crear y agregar el producto
+		            mf.getPanIntegralDAO().add(new PanIntegralDTO(cantidadPan, nombre, peso, precio, tieneGluten, tieneLevadura, tieneSieteGranos, tieneFrutosSecos));
+		            vf.getCon().mostrarMensajeEmergente("Producto Pan Integral creado exitosamente");
+		        }
 
-			}
-			if (panQueso == true) {
+		        if (panHojaldrado) {
+		            int cantidadPan = Integer.parseInt(vf.getPrincipal().getPanelEntrada().getCantidadPan().getText());
+		            String nombre = vf.getPrincipal().getPanelEntrada().getNombre().getText();
+		            double peso = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPeso().getText());
+		            double precio = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPrecio().getText());
+		            String gluten = vf.getPrincipal().getPanelEntrada().getTieneGluten().getText();
+		            boolean tieneGluten = vf.getCon().readBoolean(gluten);
+		            String levadura = vf.getPrincipal().getPanelEntrada().getTieneLevadura().getText();
+		            boolean tieneLevadura = vf.getCon().readBoolean(levadura);
+		            String croissant = vf.getPrincipal().getPanelEntrada().getEsCroissant().getText();
+		            boolean esCroissant = vf.getCon().readBoolean(croissant);
+		            String carne = vf.getPrincipal().getPanelEntrada().getTieneCarne().getText();
+		            boolean tieneCarne = vf.getCon().readBoolean(carne);
 
-				int cantidadPan1 = Integer.parseInt(vf.getPrincipal().getPanelEntrada().getCantidadPan().getText());
-
-				String nombre1 = vf.getPrincipal().getPanelEntrada().getNombre().getText();
-				double peso1 = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPeso().getText());
-				double precio1 = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPrecio().getText());
-
-				String gluten = (vf.getPrincipal().getPanelEntrada().getTieneGluten().getText());
-				boolean tieneGluten1 = vf.getCon().readBoolean(gluten);
-
-				String levadura = (vf.getPrincipal().getPanelEntrada().getTieneLevadura().getText());
-				boolean tieneLevadura1 = vf.getCon().readBoolean(levadura);
-
-				String tipoQueso = vf.getPrincipal().getPanelEntrada().getTipoQueso().getText();
-
-				String gratinado = (vf.getPrincipal().getPanelEntrada().getEsGratinado().getText());
-				boolean esGratinado = vf.getCon().readBoolean(gratinado);
-
-				mf.getPanQuesoDAO().add(new PanQuesoDTO(cantidadPan1, nombre1, peso1, precio1, tieneGluten1,
-						tieneLevadura1, tipoQueso, esGratinado));
-				vf.getCon().mostrarMensajeEmergente("Producto creado exitosamente");
-
-			}
-			if (panIntegral == true) {
-
-				int cantidadPan2 = Integer.parseInt(vf.getPrincipal().getPanelEntrada().getCantidadPan().getText());
-
-				String nombre2 = vf.getPrincipal().getPanelEntrada().getNombre().getText();
-				double peso2 = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPeso().getText());
-				double precio2 = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPrecio().getText());
-
-				String gluten = (vf.getPrincipal().getPanelEntrada().getTieneGluten().getText());
-				boolean tieneGluten2 = vf.getCon().readBoolean(gluten);
-
-				String levadura = (vf.getPrincipal().getPanelEntrada().getTieneLevadura().getText());
-				boolean tieneLevadura2 = vf.getCon().readBoolean(levadura);
-
-				String sieteGranos = (vf.getPrincipal().getPanelEntrada().getTieneSieteGranos().getText());
-				boolean tieneSieteGranos = vf.getCon().readBoolean(sieteGranos);
-
-				String frutosSecos = (vf.getPrincipal().getPanelEntrada().getTieneFrutosSecos().getText());
-				boolean tieneFrutosSecos = vf.getCon().readBoolean(frutosSecos);
-
-				mf.getPanIntegralDAO().add(new PanIntegralDTO(cantidadPan2, nombre2, peso2, precio2, tieneGluten2,
-						tieneLevadura2, tieneSieteGranos, tieneFrutosSecos));
-				vf.getCon().mostrarMensajeEmergente("Producto creado exitosamente");
-
-			}
-			if (panHojaldrado == true) {
-
-				int cantidadPan3 = Integer.parseInt(vf.getPrincipal().getPanelEntrada().getCantidadPan().getText());
-
-				String nombre3 = vf.getPrincipal().getPanelEntrada().getNombre().getText();
-				double peso3 = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPeso().getText());
-				double precio3 = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPrecio().getText());
-
-				String gluten = (vf.getPrincipal().getPanelEntrada().getTieneGluten().getText());
-				boolean tieneGluten3 = vf.getCon().readBoolean(gluten);
-
-				String levadura = (vf.getPrincipal().getPanelEntrada().getTieneLevadura().getText());
-				boolean tieneLevadura3 = vf.getCon().readBoolean(levadura);
-
-				String croissant = (vf.getPrincipal().getPanelEntrada().getEsCroissant().getText());
-				boolean esCroissant = vf.getCon().readBoolean(croissant);
-
-				String carne = (vf.getPrincipal().getPanelEntrada().getTieneCarne().getText());
-				boolean tieneCarne = vf.getCon().readBoolean(carne);
-				mf.getPanHojaldradoDAO().add(new PanHojaldradoDTO(cantidadPan3, nombre3, peso3, precio3, tieneGluten3,
-						tieneLevadura3, esCroissant, tieneCarne));
-				vf.getCon().mostrarMensajeEmergente("Producto creado exitosamente");
-
-			}
-			break;
+		        
+		            // Crear y agregar el producto
+		            mf.getPanHojaldradoDAO().add(new PanHojaldradoDTO(cantidadPan, nombre, peso, precio, tieneGluten, tieneLevadura, esCroissant, tieneCarne));
+		            vf.getCon().mostrarMensajeEmergente("Producto Pan Hojaldrado creado exitosamente");
+		        }
+		        
+		    
+		        
+		        
+	        }catch(NegativeNumberException e5 ) {
+	        	vf.getCon().mostrarAlerta(e5.getMessage());
+		    
+		   
+		    }catch(InvalidWordException e3) { 
+		        vf.getCon().mostrarAlerta(e3.getMessage());
+		        
+		        	
+		    }catch(InvalidDoubleFormatException e6) {
+		        	vf.getCon().mostrarAlerta(e6.getMessage());
+		        
+		    }catch(InvalidBooleanStateException e7)  {
+		        	vf.getCon().mostrarAlerta(e7.getMessage());
+		    
+		    }
+		    
+		    break;
 		case "UPDATE":
 			
 			if (panDulce == true && newPanDulce == true) {

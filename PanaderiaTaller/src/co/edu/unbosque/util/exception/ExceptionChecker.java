@@ -24,6 +24,7 @@ public class ExceptionChecker {
 	 * @param numero El número a verificar.
 	 * @throws NegativeNumberException Si el número es negativo.
 	 */
+
 	public static void verificarNumeroNegativo(int numero) throws NegativeNumberException {
 		
 		String numeroComoString = String.valueOf(numero);
@@ -44,6 +45,12 @@ public class ExceptionChecker {
 	 * @throws VerifyNonDecimalNumberException Si el número no es un entero.
 	 */
 
+
+
+	
+
+	
+	
 
 	/**
 	 * Verifica si una cadena es un estado booleano válido ("si" o "no").
@@ -90,4 +97,8 @@ public class ExceptionChecker {
 			throw new InvalidDoubleFormatException();
 		}
 	}
-}
+	
+    }
+
+
+

@@ -29,8 +29,12 @@ public class Consola {
 	 */
 	public int readInt(String entrada) {
         int numero = Integer.parseInt(entrada);
+
 		return numero;
 	}
+
+
+
 
 	/**
 	 * Lee un valor decimal (float) desde la entrada estándar.

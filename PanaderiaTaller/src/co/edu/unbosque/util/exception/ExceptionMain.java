@@ -25,7 +25,10 @@ public class ExceptionMain {
 			e.printStackTrace();
 		}
 
-		double f= 4.9;
+		
+		
+		double f= -4.9;
+
 		try {
 			ExceptionChecker.checkDouble(f);
 		} catch (InvalidDoubleFormatException e1) {
