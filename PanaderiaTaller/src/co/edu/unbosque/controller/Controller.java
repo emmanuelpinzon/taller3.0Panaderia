@@ -618,14 +618,16 @@ public class Controller implements ActionListener {
 		            // Obtener los valores ingresados
 		        	
 		            String cantidad = vf.getPrincipal().getPanelEntrada().getCantidadPan().getText();
-		            int cantidadPan = vf.getCon().readInt(cantidad);
 		            ExceptionChecker.verificarNumeroNegativo(cantidad);
+		            int cantidadPan = vf.getCon().readInt(cantidad);
 		            String nombre = vf.getPrincipal().getPanelEntrada().getNombre().getText();
 		            ExceptionChecker.checkWord(nombre);
-		            double peso = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPeso().getText());
-		            ExceptionChecker.checkDouble(peso);
-		            double precio = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPrecio().getText());
-		            ExceptionChecker.checkDouble(precio);
+		            String pesos = vf.getPrincipal().getPanelEntrada().getPeso().getText();
+		            ExceptionChecker.checkDouble(pesos);
+		            double peso = vf.getCon().readDouble(pesos);
+		            String precios = vf.getPrincipal().getPanelEntrada().getPrecio().getText();
+		            ExceptionChecker.checkDouble(precios);
+		            double precio = vf.getCon().readDouble(precios);
 		            String gluten = vf.getPrincipal().getPanelEntrada().getTieneGluten().getText();
 		            boolean tieneGluten = vf.getCon().readBoolean(gluten);
 		            ExceptionChecker.checkCondition(gluten);
@@ -651,10 +653,12 @@ public class Controller implements ActionListener {
 		            ExceptionChecker.verificarNumeroNegativo(cantidad);
 		            String nombre = vf.getPrincipal().getPanelEntrada().getNombre().getText();
 		            ExceptionChecker.checkWord(nombre);
-		            double peso = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPeso().getText());
-		            ExceptionChecker.checkDouble(peso);
-		            double precio = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPrecio().getText());
-		            ExceptionChecker.checkDouble(precio);
+		            String pesos = vf.getPrincipal().getPanelEntrada().getPeso().getText();
+		            ExceptionChecker.checkDouble(pesos);
+		            double peso = vf.getCon().readDouble(pesos);
+		            String precios = vf.getPrincipal().getPanelEntrada().getPrecio().getText();
+		            ExceptionChecker.checkDouble(precios);
+		            double precio = vf.getCon().readDouble(precios);
 		            String gluten = vf.getPrincipal().getPanelEntrada().getTieneGluten().getText();
 		            boolean tieneGluten = vf.getCon().readBoolean(gluten);
 		            ExceptionChecker.checkCondition(gluten);
@@ -681,10 +685,12 @@ public class Controller implements ActionListener {
 		            ExceptionChecker.verificarNumeroNegativo(cantidad);
 		            String nombre = vf.getPrincipal().getPanelEntrada().getNombre().getText();
 		            ExceptionChecker.checkWord(nombre);
-		            double peso = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPeso().getText());
-		            ExceptionChecker.checkDouble(peso);
-		            double precio = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPrecio().getText());
-		            ExceptionChecker.checkDouble(precio);
+		            String pesos = vf.getPrincipal().getPanelEntrada().getPeso().getText();
+		            ExceptionChecker.checkDouble(pesos);
+		            double peso = vf.getCon().readDouble(pesos);
+		            String precios = vf.getPrincipal().getPanelEntrada().getPrecio().getText();
+		            ExceptionChecker.checkDouble(precios);
+		            double precio = vf.getCon().readDouble(precios);
 		            String gluten = vf.getPrincipal().getPanelEntrada().getTieneGluten().getText();
 		            boolean tieneGluten = vf.getCon().readBoolean(gluten);
 		            ExceptionChecker.checkCondition(gluten);
@@ -707,27 +713,38 @@ public class Controller implements ActionListener {
 		        }
 
 		        if (panHojaldrado) {
-		            int cantidadPan = Integer.parseInt(vf.getPrincipal().getPanelEntrada().getCantidadPan().getText());
+		        	String cantidad = vf.getPrincipal().getPanelEntrada().getCantidadPan().getText();
+		            int cantidadPan = vf.getCon().readInt(cantidad);
+		            ExceptionChecker.verificarNumeroNegativo(cantidad);
 		            String nombre = vf.getPrincipal().getPanelEntrada().getNombre().getText();
-		            double peso = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPeso().getText());
-		            double precio = Double.parseDouble(vf.getPrincipal().getPanelEntrada().getPrecio().getText());
+		            ExceptionChecker.checkWord(nombre);
+		            String pesos = vf.getPrincipal().getPanelEntrada().getPeso().getText();
+		            ExceptionChecker.checkDouble(pesos);
+		            double peso = vf.getCon().readDouble(pesos);
+		            String precios = vf.getPrincipal().getPanelEntrada().getPrecio().getText();
+		            ExceptionChecker.checkDouble(precios);
+		            double precio = vf.getCon().readDouble(precios);
 		            String gluten = vf.getPrincipal().getPanelEntrada().getTieneGluten().getText();
 		            boolean tieneGluten = vf.getCon().readBoolean(gluten);
+		            ExceptionChecker.checkCondition(gluten);
 		            String levadura = vf.getPrincipal().getPanelEntrada().getTieneLevadura().getText();
+		            ExceptionChecker.checkWord(levadura);
 		            boolean tieneLevadura = vf.getCon().readBoolean(levadura);
+		            ExceptionChecker.checkCondition(levadura);
 		            String croissant = vf.getPrincipal().getPanelEntrada().getEsCroissant().getText();
+		            ExceptionChecker.checkWord(croissant);
 		            boolean esCroissant = vf.getCon().readBoolean(croissant);
+		            ExceptionChecker.checkCondition(croissant);
 		            String carne = vf.getPrincipal().getPanelEntrada().getTieneCarne().getText();
 		            boolean tieneCarne = vf.getCon().readBoolean(carne);
+		            ExceptionChecker.checkCondition(carne);
 
 		        
 		            // Crear y agregar el producto
 		            mf.getPanHojaldradoDAO().add(new PanHojaldradoDTO(cantidadPan, nombre, peso, precio, tieneGluten, tieneLevadura, esCroissant, tieneCarne));
 		            vf.getCon().mostrarMensajeEmergente("Producto Pan Hojaldrado creado exitosamente");
 		        }
-		        
-		    
-		        
+		            
 		        
 	        }catch(NegativeNumberException e5 ) {
 	        	vf.getCon().mostrarAlerta(e5.getMessage());

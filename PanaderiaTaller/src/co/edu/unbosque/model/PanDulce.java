@@ -114,7 +114,7 @@ public class PanDulce extends Pan {
 	 */
 	@Override
 	public String toString() {
-		return super.toString() + "\n tieneArequipe: " + tieneArequipe + "\n  saborDulce: " + saborDulce + "\n";
+		return "\nPan Dulce 🍬" + super.toString() + "tieneArequipe: " + tieneArequipe + "\nsaborDulce: " + saborDulce + "\n";
 	}
 
 	/**
@@ -123,6 +123,6 @@ public class PanDulce extends Pan {
 	 */
 	@Override
 	public void preparar() {
-		System.out.println("Preparando " + getNombre() + " con ingredientes dulces.");
+		System.out.println("Preparando " + getNombre() + " con ingredientes dulces."); 
 	}
 }
