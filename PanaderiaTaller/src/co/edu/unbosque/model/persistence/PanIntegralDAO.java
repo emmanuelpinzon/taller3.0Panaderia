@@ -11,11 +11,12 @@ import co.edu.unbosque.model.PanIntegralDTO;
 public class PanIntegralDAO implements CRUDOperation <PanIntegralDTO, PanIntegral>{
 	private ArrayList<PanIntegral> listaPanIntegrales;
 	private final String FILE_NAME = "PanIntegral.csv";
-	private final String SERIAL_NAME= "panHojaldrado.dat";
+	private final String SERIAL_NAME= "panIntegral.dat";
 	
 	public PanIntegralDAO() {
-listaPanIntegrales= new ArrayList<>();
+
 FileHandler.checkFolder();
+readSerialized();
 	}
 	@Override
 	public String ShowAll() {

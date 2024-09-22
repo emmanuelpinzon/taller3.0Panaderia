@@ -1,5 +1,7 @@
 package co.edu.unbosque.model;
 
+import java.io.Serializable;
+
 /**
  * Clase que representa un tipo específico de pan: Pan Hojaldrado. Extiende la
  * clase abstracta Pan e incluye atributos específicos como si es un croissant y
@@ -8,8 +10,12 @@ package co.edu.unbosque.model;
  * @author Emmanuel
  * @version 1.0
  */
-public class PanHojaldrado extends Pan {
+public class PanHojaldrado extends Pan implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private boolean esCroissant;
 	private boolean tieneCarne;
 

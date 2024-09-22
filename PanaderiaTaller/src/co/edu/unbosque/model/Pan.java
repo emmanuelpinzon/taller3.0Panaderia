@@ -1,5 +1,7 @@
 package co.edu.unbosque.model;
 
+import java.io.Serializable;
+
 /**
  * Clase abstracta que representa un tipo de pan. Contiene atributos comunes a
  * todos los tipos de pan, así como métodos para acceder y modificar esos

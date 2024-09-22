@@ -15,7 +15,7 @@ public class PanHojaldradoDAO implements CRUDOperation<PanHojaldradoDTO, PanHoja
 	public PanHojaldradoDAO() {
 
 		FileHandler.checkFolder();
-		
+		readSerialized();
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class PanHojaldradoDAO implements CRUDOperation<PanHojaldradoDTO, PanHoja
 	@Override
 	public String ShowAllNames() {
 	    if (listaPanHojaldrado.isEmpty()) {
-	        return "No hay panes dulces en la lista.";
+	        return "No hay panes hojaldrados en la lista.";
 	    }
 
 	    String rta = "";

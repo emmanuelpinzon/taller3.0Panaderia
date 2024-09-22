@@ -11,11 +11,12 @@ import co.edu.unbosque.model.PanQuesoDTO;
 public class PanQuesoDAO implements CRUDOperation <PanQuesoDTO,PanQueso>{
 	private ArrayList<PanQueso> listaPanQuesos;
 	private final String FILE_NAME = "panQueso.csv";
-	private final String SERIAL_NAME= "panHojaldrado.dat";
+	private final String SERIAL_NAME= "panQueso.dat";
 	
 	public PanQuesoDAO() {
-listaPanQuesos= new ArrayList<>();
+
 FileHandler.checkFolder();
+readSerialized();
 	}
 	@Override
 	public String ShowAll() {
@@ -93,7 +94,7 @@ FileHandler.checkFolder();
 		        listaPanQuesos.remove(panQueso);
 		        // Guarda los cambios en el archivo
 		        writeFile();
-		        writeFile();
+		        writeSerialized();
 		        return true; // Eliminación exitosa
 		    } else {
 		        return false; // No se encontró el pan

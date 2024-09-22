@@ -1,5 +1,7 @@
 package co.edu.unbosque.model;
 
+import java.io.Serializable;
+
 /**
  * Clase que representa un tipo específico de pan: Pan Integral. Extiende la
  * clase abstracta Pan e incluye atributos específicos como si tiene siete
@@ -8,8 +10,12 @@ package co.edu.unbosque.model;
  * @author Emmanuel
  * @version 1.0
  */
-public class PanIntegral extends Pan {
+public class PanIntegral extends Pan implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private boolean tieneSieteGranos;
 	private boolean tieneFrutosSecos;
 

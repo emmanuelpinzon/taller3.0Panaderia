@@ -1,5 +1,7 @@
 package co.edu.unbosque.model;
 
+import java.io.Serializable;
+
 /**
  * Clase que representa un tipo específico de pan: Pan Dulce. Extiende la clase
  * abstracta Pan e incluye atributos específicos como si tiene arequipe y el
@@ -8,8 +10,12 @@ package co.edu.unbosque.model;
  * @author Emmanuel
  * @version 1.0
  */
-public class PanDulce extends Pan {
+public class PanDulce extends Pan implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private boolean tieneArequipe;
 	private String saborDulce;
 

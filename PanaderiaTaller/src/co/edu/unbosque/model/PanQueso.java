@@ -1,5 +1,7 @@
 package co.edu.unbosque.model;
 
+import java.io.Serializable;
+
 /**
  * Clase que representa un tipo específico de pan: Pan Queso. Extiende la clase
  * abstracta Pan e incluye atributos específicos como el tipo de queso y si está
@@ -8,8 +10,12 @@ package co.edu.unbosque.model;
  * @author Emmanuel
  * @version 1.0
  */
-public class PanQueso extends Pan {
+public class PanQueso extends Pan implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String tipoQueso;
 	private boolean esGratinado;
 
