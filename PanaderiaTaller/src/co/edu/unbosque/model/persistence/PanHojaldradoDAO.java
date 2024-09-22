@@ -10,10 +10,12 @@ import co.edu.unbosque.model.PanHojaldradoDTO;
 public class PanHojaldradoDAO implements CRUDOperation<PanHojaldradoDTO, PanHojaldrado> {
 	private ArrayList<PanHojaldrado> listaPanHojaldrado;
 	private final String FILE_NAME = "PanHojaldrado.csv";
+	private final String SERIAL_NAME= "panHojaldrado.dat";
 
 	public PanHojaldradoDAO() {
-		listaPanHojaldrado = new ArrayList<>();
+
 		FileHandler.checkFolder();
+		
 	}
 
 	@Override
@@ -52,6 +54,7 @@ public class PanHojaldradoDAO implements CRUDOperation<PanHojaldradoDTO, PanHoja
 		if (find(DataMapper.PanHojaldradoDTOToPanHojaldrado(newData)) == null) {
 			listaPanHojaldrado.add(DataMapper.PanHojaldradoDTOToPanHojaldrado(newData));
 			writeFile();
+			writeSerialized();
 			return true;
 		} else {
 			return false;
@@ -68,6 +71,7 @@ public class PanHojaldradoDAO implements CRUDOperation<PanHojaldradoDTO, PanHoja
 			listaPanHojaldrado.remove(found);
 
 			writeFile();
+			writeSerialized();
 			return true;
 		} else {
 			return false;
@@ -89,6 +93,7 @@ public class PanHojaldradoDAO implements CRUDOperation<PanHojaldradoDTO, PanHoja
 		        listaPanHojaldrado.remove(panHojaldrado);
 		        // Guarda los cambios en el archivo
 		        writeFile();
+		        writeSerialized();
 		        return true; // Eliminación exitosa
 		    } else {
 		        return false; // No se encontró el pan
@@ -122,6 +127,7 @@ public class PanHojaldradoDAO implements CRUDOperation<PanHojaldradoDTO, PanHoja
 			listaPanHojaldrado.remove(found);
 			listaPanHojaldrado.add(DataMapper.PanHojaldradoDTOToPanHojaldrado(newData));
 			writeFile();
+			writeSerialized();
 			return true;
 		} else {
 			return false;
@@ -142,6 +148,19 @@ public class PanHojaldradoDAO implements CRUDOperation<PanHojaldradoDTO, PanHoja
 			content += "\n";
 		}
 		FileHandler.writeFile(FILE_NAME, content);
+	}
+	public void writeSerialized() {
+		FileHandler.writeSerialized(SERIAL_NAME, listaPanHojaldrado);
+	}
+	
+	
+	public void readSerialized() {
+		Object content= FileHandler.readSerialized(SERIAL_NAME);
+		if(content== null) {
+			listaPanHojaldrado= new ArrayList<>();
+		}else {
+			listaPanHojaldrado=(ArrayList<PanHojaldrado>)content;
+		}
 	}
 
 }

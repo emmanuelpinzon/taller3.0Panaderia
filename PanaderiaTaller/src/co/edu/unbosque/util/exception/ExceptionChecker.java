@@ -27,7 +27,7 @@ public class ExceptionChecker {
 
 	public static int verificarNumeroNegativo(String entrada) throws NegativeNumberException {
         // Expresión regular que asegura que solo sea un número entero positivo
-        if (!entrada.matches("^[0-9]")) {
+        if (!entrada.matches("^[0-9]+$")) {
             throw new NegativeNumberException();
         }
         // Convierte a int y retorna el valor
@@ -88,18 +88,13 @@ public class ExceptionChecker {
 	 * @throws InvalidDoubleFormatException Si el número no tiene un formato decimal
 	 *                                      válido.
 	 */
-	public static double checkDouble(String decimal) throws InvalidDoubleFormatException {
-		 if (!decimal.matches ("[^0-9.]")) {
-	            throw new InvalidDoubleFormatException();
-	        }
-	        // Convierte a int y retorna el valor
-	        return Double.parseDouble(decimal);
+	public static void checkDouble(double decimal) throws InvalidDoubleFormatException {
+	    String numeroComoString = String.valueOf(decimal);
+	    Pattern p = Pattern.compile("[^0-9.]");
+	    Matcher m = p.matcher(numeroComoString);
+	    
+	    if (m.find()) {
+		ExceptionChecker.checkDouble(decimal);
 	    }
-		
-		
 	}
-	
-    
-
-
-
+}

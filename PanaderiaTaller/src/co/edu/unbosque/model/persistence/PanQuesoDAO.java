@@ -2,7 +2,8 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
-
+import co.edu.unbosque.model.Pan;
+import co.edu.unbosque.model.PanIntegral;
 import co.edu.unbosque.model.PanQueso;
 import co.edu.unbosque.model.PanQuesoDTO;
 
@@ -10,6 +11,7 @@ import co.edu.unbosque.model.PanQuesoDTO;
 public class PanQuesoDAO implements CRUDOperation <PanQuesoDTO,PanQueso>{
 	private ArrayList<PanQueso> listaPanQuesos;
 	private final String FILE_NAME = "panQueso.csv";
+	private final String SERIAL_NAME= "panHojaldrado.dat";
 	
 	public PanQuesoDAO() {
 listaPanQuesos= new ArrayList<>();
@@ -51,6 +53,7 @@ FileHandler.checkFolder();
 		if (find(DataMapper.PanQuesoDTOToPanQueso(newData)) == null) {
 			listaPanQuesos.add(DataMapper.PanQuesoDTOToPanQueso(newData));
 			writeFile();
+			writeSerialized();
 			return true;
 		} else {
 			return false;
@@ -67,6 +70,7 @@ FileHandler.checkFolder();
 			listaPanQuesos.remove(found);
 
 			writeFile();
+			writeSerialized();
 			return true;
 		} else {
 			return false;
@@ -88,6 +92,7 @@ FileHandler.checkFolder();
 		        // Si se encontró el pan, lo elimina de la lista
 		        listaPanQuesos.remove(panQueso);
 		        // Guarda los cambios en el archivo
+		        writeFile();
 		        writeFile();
 		        return true; // Eliminación exitosa
 		    } else {
@@ -123,6 +128,7 @@ FileHandler.checkFolder();
 			listaPanQuesos.remove(found);
 			listaPanQuesos.add(DataMapper.PanQuesoDTOToPanQueso(newData));
 			writeFile();
+			writeSerialized();
 			return true;
 		} else {
 			return false;
@@ -142,6 +148,19 @@ FileHandler.checkFolder();
 			content += "\n";
 		}
 		FileHandler.writeFile(FILE_NAME, content);
+	}
+	public void writeSerialized() {
+		FileHandler.writeSerialized(SERIAL_NAME, listaPanQuesos);
+	}
+	
+	
+	public void readSerialized() {
+		Object content= FileHandler.readSerialized(SERIAL_NAME);
+		if(content== null) {
+			listaPanQuesos= new ArrayList<>();
+		}else {
+			listaPanQuesos=(ArrayList<PanQueso>)content;
+		}
 	}
 	
 	}

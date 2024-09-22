@@ -12,7 +12,7 @@ public class ExceptionMain {
 			e.printStackTrace();
 		}
 		try {
-		int b=2;
+		String b="2";
 		ExceptionChecker.verificarNumeroNegativo(b);
 		}catch(NegativeNumberException e) {
 			e.printStackTrace();
@@ -27,7 +27,7 @@ public class ExceptionMain {
 
 		
 		
-		double f= -4.9;
+		String f= "4.5";
 
 		try {
 			ExceptionChecker.checkDouble(f);

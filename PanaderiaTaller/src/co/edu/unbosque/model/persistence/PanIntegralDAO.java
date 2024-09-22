@@ -11,6 +11,7 @@ import co.edu.unbosque.model.PanIntegralDTO;
 public class PanIntegralDAO implements CRUDOperation <PanIntegralDTO, PanIntegral>{
 	private ArrayList<PanIntegral> listaPanIntegrales;
 	private final String FILE_NAME = "PanIntegral.csv";
+	private final String SERIAL_NAME= "panHojaldrado.dat";
 	
 	public PanIntegralDAO() {
 listaPanIntegrales= new ArrayList<>();
@@ -143,6 +144,19 @@ FileHandler.checkFolder();
 			content += "\n";
 		}
 		FileHandler.writeFile(FILE_NAME, content);
+	}
+	public void writeSerialized() {
+		FileHandler.writeSerialized(SERIAL_NAME, listaPanIntegrales);
+	}
+	
+	
+	public void readSerialized() {
+		Object content= FileHandler.readSerialized(SERIAL_NAME);
+		if(content== null) {
+			listaPanIntegrales= new ArrayList<>();
+		}else {
+			listaPanIntegrales=(ArrayList<PanIntegral>)content;
+		}
 	}
 	}
 

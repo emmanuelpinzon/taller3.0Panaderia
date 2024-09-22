@@ -70,9 +70,8 @@ public class Consola {
 	 * 
 	 * @return el valor double leído
 	 */
-	public double readDouble(String decimal) {
-		 double numero1 = Double.parseDouble(decimal);
-	        return numero1;
+	public double readDouble() {
+		return sc.nextDouble();
 	}
 
 	/**

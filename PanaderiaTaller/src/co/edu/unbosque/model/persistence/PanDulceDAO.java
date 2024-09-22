@@ -12,8 +12,10 @@ public class PanDulceDAO implements CRUDOperation<PanDulceDTO, PanDulce> {
 	private final String SERIAL_NAME= "panDulce.dat";
 
 	public PanDulceDAO() {
-		listaPanDulces = new ArrayList<>();
+
+
 		FileHandler.checkFolder();
+		readSerialized();
 	}
 
 	@Override
@@ -51,7 +53,7 @@ public class PanDulceDAO implements CRUDOperation<PanDulceDTO, PanDulce> {
 	public boolean add(PanDulceDTO newData) {
 		if (find(DataMapper.PanDulceDTOToPanDulce(newData)) == null) {
 			listaPanDulces.add(DataMapper.PanDulceDTOToPanDulce(newData));
-			writeFile();
+			writeSerialized();
 			return true;
 		} else {
 			return false;
@@ -66,8 +68,8 @@ public class PanDulceDAO implements CRUDOperation<PanDulceDTO, PanDulce> {
 		if (found != null) {
 
 			listaPanDulces.remove(found);
-
-			writeFile();
+            writeFile();
+			writeSerialized();
 			return true;
 		} else {
 			return false;
@@ -90,6 +92,7 @@ public class PanDulceDAO implements CRUDOperation<PanDulceDTO, PanDulce> {
 		        listaPanDulces.remove(panDulce);
 		        // Guarda los cambios en el archivo
 		        writeFile();
+		        writeSerialized();
 		        return true; // Eliminación exitosa
 		    } else {
 		        return false; // No se encontró el pan
@@ -125,6 +128,9 @@ public class PanDulceDAO implements CRUDOperation<PanDulceDTO, PanDulce> {
 			listaPanDulces.remove(found);
 			listaPanDulces.add(DataMapper.PanDulceDTOToPanDulce(newData));
 			writeFile();
+			writeSerialized();
+			
+
 			return true;
 		} else {
 			return false;
